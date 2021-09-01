@@ -16,10 +16,10 @@
           background-color: white;
           margin-left: auto;
           margin-right: auto;
-          width: 80%px;
-          border: 5%;
-          padding: 3%;
-          border-radius: 5%;
+          width: 550px;
+          border: 3px;
+          padding: 20px;
+          border-radius: 5px;
         }
         .bluetext{
             color:blue;
@@ -28,7 +28,6 @@
 </head>
 <body>
 <form action="https://docs.google.com/forms/d/e/1FAIpQLSeZ21qI_4JmOf_CgWpoKnDlqFsPFtZXx6k8Rd_xwcafwTRF2g/formResponse" target="resultiframe" method="post">
-    <iframe src="https://docs.google.com/document/d/1VZwVk3FBhyS5Pil94HrXJY3G3FR7A0r5v1x2ZZ2bXvw/edit?usp=sharing" width="100%" height="500px"></iframe>
   <div class="content-wrap" style="border-style: groove; border-color: black; border-radius: 5%;">
     <h1 style="text-align: center;">독서일지</h1>
     <hr>
@@ -63,20 +62,18 @@
   </fieldset>
   <fieldset style="margin: 5px;">
   <div>
-    날짜 <input type="date" name="entry.1349222630" value="날짜" autofocus required> 
-      <br>
-      <br>
+    <input type="date" name="entry.1349222630" value="날짜" autofocus required> 
     <input type="number" name="entry.372268030" min="1" max="30" title="차시" autofocus required> 차시
   </div>
   </fieldset>
      <hr>
      <fieldset style="margin: 10px;">
          <legend>내용 요약(500자 이상) </legend>
-         <Textarea name="entry.1662932016" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
+         <Textarea name="entry.1662932016" cols="60" rows="10" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
      </fieldset>
   <fieldset style="margin: 10px;">
      <legend>소감(500자 이상)</legend>
-     <Textarea name="entry.1992378183" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
+     <Textarea name="entry.1992378183" cols="60" rows="10" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
   </fieldset>
   <input type="submit" value="제출하기" style="margin: 10px;">
   <iframe name="resultiframe" width="550px" height="50px">제출 결과</iframe>
