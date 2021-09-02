@@ -78,33 +78,34 @@
     </div>
       <br>
    <div> 
-     <fieldset>  
+     <fieldset>
+         <legend> 번호 & 이름</legend>  
        <input type="number" name="entry.1519818804" min="1" max="50" title="번호" style="size: 3em" autofocus required> 번
        <input type="text" title="이름" name="entry.541370534" size="10" placeholder="이름" autofocus required> 
      </fieldset>
    </div>
       <hr>
-   <div>
-      <fieldset>
-          <legend> 날짜 </legend>
-    <input type="date" name="entry.1349222630" value="날짜" autofocus required>
-      </fieldset>
+    <fieldset>
+     <legend>날짜 & 차시</legend>
+       <div style="float: left;">
+        <input type="date" name="entry.1349222630" value="날짜" autofocus required> 
+       </div>
+       <div style="float: left; margin-left: 2em;">
+        <input type="number" name="entry.372268030" min="1" max="30" title="차시" autofocus required> 차시
+       </div>
+    </fieldset>   
       <br>
-      <fieldset>
-    <input type="number" name="entry.372268030" min="1" max="30" title="차시" autofocus required> 차시
-          </fiedlset>
-   </div>
      <hr>
    <div>  
       <fieldset>
          <legend>내용 요약(500자 이상) </legend>
-         <Textarea name="entry.1662932016" style="width:100%" rows="10" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
+         <Textarea name="entry.1662932016" style="width:98%" rows="10" placeholder="오늘 읽은 부분에 대해 요약하세요"></Textarea>
      </fieldset>
    </div>
    <div>    
       <fieldset>
          <legend>소감(500자 이상)</legend>
-         <Textarea name="entry.1992378183" style="width: 100%;" rows="10" placeholder="오늘 읽은 부분 중 자신의 경험 또는 진로와 연관지어 봅시다."></Textarea>
+         <Textarea name="entry.1992378183" style="width: 98%;" rows="10" placeholder="오늘 읽은 부분 중 자신의 경험 또는 진로와 연관지어 봅시다."></Textarea>
       </fieldset>
    </div>
    <div>    
