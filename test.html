@@ -71,6 +71,29 @@
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfc2vcO4CHgoCV6zDvPVWgWGUT4jXhq6FoArCMheTnjnIliFA/formResponse" target="_blank" method="post">
    <h1 style="text-align: center;"> 사설모의고사 채점기</h1>
     <hr>
+   <button onclick="moveKorean()";>국어 </button>
+    <button onclick="moveMath()";>수학 </button>
+    <button onclick="moveEnglish()";>영어 </button>
+    <button onclick="movehistory()";>한국사 </button>
+    <button onclick="moveSc()";>탐구 </button>
+      <script>
+        function moveMath(){
+            location.href = 'https://cuoquedase.github.io/class/mathtest.html';
+        }
+        function moveKorean(){
+            location.href = 'https://cuoquedase.github.io/class/test.html';
+        }
+        function moveEnglish(){
+            location.href = 'https://cuoquedase.github.io/class/englishtest.html';
+        }
+        function movehistory(){
+            location.href = 'https://cuoquedase.github.io/class/historytest.html';
+        }
+        function moveSc(){
+            location.href = 'https://cuoquedase.github.io/class/sctest.html';
+        }    
+      </script>
+    <hr>
    <div> 
      <fieldset>
          <legend> 학번 & 이름</legend>  
@@ -82,29 +105,13 @@
    <div> 
      <fieldset>  
      <legend>과목</legend>
-     <label> 국어 <input type="radio" class="radio" name="entry.63790371" value="국어" autofocus required> </label> &nbsp &nbsp
-     <label> 수학 <input type="radio" class="radio" name="entry.63790371" value="수학" autofocus required> </label>  &nbsp &nbsp
-     <label> 영어 <input type="radio" class="radio" name="entry.63790371" value="영어" autofocus required> </label>  &nbsp &nbsp
-     <label> 한국사 <input type="radio" class="radio" name="entry.63790371" value="한국사" autofocus required> </label>  &nbsp &nbsp <br>
-     <label> 한국지리 <input type="radio" class="radio" name="entry.63790371" value="한국지리" autofocus required> </label>  &nbsp &nbsp
-     <label> 세계지리 <input type="radio" class="radio" name="entry.63790371" value="세계지리" autofocus required> </label>  &nbsp &nbsp
-     <label> 사회문화 <input type="radio" class="radio" name="entry.63790371" value="사회문화" autofocus required> </label> &nbsp &nbsp
-     <label> 생활과 윤리 <input type="radio" class="radio" name="entry.63790371" value="생활과 윤리" autofocus required> </label>  &nbsp &nbsp <br>
-     <label> 물리학 1 <input type="radio" class="radio" name="entry.63790371" value="물리학1" autofocus required> </label>  &nbsp &nbsp
-     <label> 화학 1 <input type="radio" class="radio" name="entry.63790371" value="화학1" autofocus required> </label>  &nbsp &nbsp
-     <label> 생물학 1 <input type="radio" class="radio" name="entry.63790371" value="생물학1" autofocus required> </label>  &nbsp &nbsp
-     <label> 지구과학 1 <input type="radio" class="radio" name="entry.63790371" value="지구과학1" autofocus required> </label>  &nbsp &nbsp
-     <label> 지구과학 2 <input type="radio" class="radio" name="entry.63790371" value="지구과학2" autofocus required> </label>  &nbsp &nbsp
+     <label> 국어 <input type="radio" class="radio" name="entry.63790371" value="국어" checked> </label> &nbsp &nbsp
      </fieldset> 
    <hr> 
      <fieldset>
         <legend>선택과목</legend>
         <label> 언매 <input type="radio" class="radio" name="entry.583899468" value="언매" autofocus required> </label> &nbsp &nbsp
-        <label> 화작 <input type="radio" class="radio" name="entry.583899468" value="화작" autofocus required> </label>  &nbsp &nbsp <br>
-        <label> 확통 <input type="radio" class="radio" name="entry.583899468" value="확통" autofocus required> </label>  &nbsp &nbsp
-        <label> 미적 <input type="radio" class="radio" name="entry.583899468" value="미적" autofocus required> </label>  &nbsp &nbsp
-        <label> 기하 <input type="radio" class="radio" name="entry.583899468" value="시하" autofocus required> </label>  &nbsp &nbsp <br>
-        <label> 없음 <input type="radio" class="radio" name="entry.583899468" value="없음" autofocus required> </label>
+        <label> 화작 <input type="radio" class="radio" name="entry.583899468" value="화작" autofocus required> </label>  &nbsp &nbsp
     </fieldset> 
    </div>
      <hr>
