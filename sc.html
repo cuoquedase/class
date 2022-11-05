@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
+    <title> 사설모의고사 채점기 </title>
+    <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
+    <style>
+@font-face {
+    font-family: 'GongGothicMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+      body{
+  font-family:'GongGothicMedium';
+  background-image:url('https://source.unsplash.com/user/impatrickt');
+  background-size:100%;
+          font-size:1em;
+      }
+        .content-wrap{
+          background-color: white;
+          margin-left: auto;
+          margin-right: auto;
+          width: 85%;
+          border: 0.3rem;
+          padding: 0.3rem;
+          border-style: groove;
+          border-radius: 3%;
+          border-color: black;
+        }
+
+        .radio{
+            width: 1em;
+            height: 1em;
+            border: 0.1em;
+        }
+
+        .table{
+            vertical-align: top;
+            height: 2em;
+        }
+
+        .table2{
+            vertical-align: top;
+            height: 3em;
+        }
+     @media screen and (min-width:320px){
+       .content-wrap {
+         width:95%
+       }
+     }
+
+     @media screen and (min-width:768px){
+       .content-wrap {
+         width:50% 
+       }
+     }
+
+     @media screen and (min-width:1024px){
+       .content-wrap {
+         width:30%
+
+         }
+     }
+    </style>
+</head>
+<body>
+  <div class="content-wrap" style="overflow:scroll;">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfc2vcO4CHgoCV6zDvPVWgWGUT4jXhq6FoArCMheTnjnIliFA/formResponse" target="_blank" method="post">
+   <h1 style="text-align: center;"> 사설모의고사 채점기(탐구)</h1>
+    <hr>
+    <button onclick="moveMath()";>수학 </button>
+      <script>
+        function moveURL(){
+            location.href = "https://cuoquedase.github.io/class/mathtest.html";
+        }
+      </script>
+    <hr>
+   <div> 
+     <fieldset>
+         <legend> 학번 & 이름</legend>  
+       <input type="text" title="학번" name="entry.1304227743" size="10" placeholder="학번" style="size: 5em;" autofocus required> 
+       <input type="text" title="이름" name="entry.1442973043" size="10" placeholder="이름" style="margin-left:3em;" autofocus required> 
+     </fieldset>
+   </div>
+      <hr>
+   <div> 
+     <fieldset>  
+     <legend>과목</legend>
+     <label> 한국지리 <input type="radio" class="radio" name="entry.63790371" value="한국지리" autofocus required> </label>  &nbsp &nbsp
+     <label> 세계지리 <input type="radio" class="radio" name="entry.63790371" value="세계지리" autofocus required> </label>  &nbsp &nbsp
+     <label> 사회문화 <input type="radio" class="radio" name="entry.63790371" value="사회문화" autofocus required> </label> &nbsp &nbsp
+     <label> 생활과 윤리 <input type="radio" class="radio" name="entry.63790371" value="생활과 윤리" autofocus required> </label>  &nbsp &nbsp <br>
+     <label> 물리학 1 <input type="radio" class="radio" name="entry.63790371" value="물리학1" autofocus required> </label>  &nbsp &nbsp
+     <label> 화학 1 <input type="radio" class="radio" name="entry.63790371" value="화학1" autofocus required> </label>  &nbsp &nbsp
+     <label> 생물학 1 <input type="radio" class="radio" name="entry.63790371" value="생물학1" autofocus required> </label>  &nbsp &nbsp
+     <label> 지구과학 1 <input type="radio" class="radio" name="entry.63790371" value="지구과학1" autofocus required> </label>  &nbsp &nbsp
+     <label> 지구과학 2 <input type="radio" class="radio" name="entry.63790371" value="지구과학2" autofocus required> </label>  &nbsp &nbsp
+     </fieldset> 
+   <hr> 
+   </div>
+     <hr>
+   <div>  
+
+     <fieldset>
+     <legend>답</legend>
+       <table width="100%" class="table">
+         <tr class="table">
+          <th scope="row"  width="20%"> 1번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.900280773" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.900280773" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.900280773" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.900280773" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.900280773" value="5"> </td>
+         </tr>
+         <tr class="table"> 
+          <th scope="row"> 2번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.106919471" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.106919471" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.106919471" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.106919471" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.106919471" value="5"> </td>
+         </tr> 
+         <tr class="table">
+          <th scope="row"> 3번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.587675232" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.587675232" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.587675232" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.587675232" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.587675232" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 4번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1203742009" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1203742009" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1203742009" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1203742009" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1203742009" value="5"> </td>
+         </tr> 
+         <tr class="table2">
+          <th scope="row"> 5번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.301842187" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.301842187" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.301842187" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.301842187" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.301842187" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 6번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.918729424" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.918729424" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.918729424" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.918729424" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.918729424" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 7번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.797447637" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.797447637" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.797447637" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.797447637" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.797447637" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 8번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.729905784" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.729905784" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.729905784" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.729905784" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.729905784" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 9번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1621200346" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1621200346" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1621200346" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1621200346" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1621200346" value="5"> </td>
+         </tr> 
+         <tr class="table2">
+          <th scope="row"> 10번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.629578105" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.629578105" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.629578105" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.629578105" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.629578105" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"  width="20%"> 11번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1728653420" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1728653420" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1728653420" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1728653420" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1728653420" value="5"> </td>
+         </tr>
+         <tr class="table"> 
+          <th scope="row"> 12번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1158158133" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1158158133" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1158158133" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1158158133" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1158158133" value="5"> </td>
+         </tr> 
+         <tr class="table">
+          <th scope="row"> 13번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1735798338" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1735798338" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1735798338" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1735798338" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1735798338" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 14번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.274883160" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.274883160" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.274883160" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.274883160" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.274883160" value="5"> </td>
+         </tr> 
+         <tr class="table2">
+          <th scope="row"> 15번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1515215507" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1515215507" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1515215507" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1515215507" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1515215507" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 16번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1272260378" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1272260378" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1272260378" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1272260378" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1272260378" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 17번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.993843302" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.993843302" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.993843302" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.993843302" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.993843302" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 18번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.479229943" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.479229943" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.479229943" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.479229943" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.479229943" value="5"> </td>
+         </tr>
+         <tr class="table">
+          <th scope="row"> 19번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1358547514" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1358547514" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1358547514" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1358547514" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1358547514" value="5"> </td>
+         </tr> 
+         <tr class="table2">
+          <th scope="row"> 20번 </th>
+          <td> 1 <input type="radio" class="radio" name="entry.1870473345" value="1"> </td>
+          <td> 2 <input type="radio" class="radio" name="entry.1870473345" value="2"> </td>
+          <td> 3 <input type="radio" class="radio" name="entry.1870473345" value="3"> </td>
+          <td> 4 <input type="radio" class="radio" name="entry.1870473345" value="4"> </td>
+          <td> 5 <input type="radio" class="radio" name="entry.1870473345" value="5"> </td>
+
+      </table>    
+     </fieldset>
+       
+    </div>
+  <div>  
+      <input type="submit" value="제출하기" style="margin: 0.5em;">
+  </div>
+</form>
+</div>
+</body>
+</html>
