@@ -68,31 +68,31 @@
 </head>
 <body>
   <div class="content-wrap" style="overflow:scroll; background-color: #fcfbe7;">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdPI_C02bJRWDZAuXufRPvrrAW3gh1fPcwL3fjlcd6QlfDDCA/formResponse" target="_blank" method="post">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdPI_C02bJRWDZAuXufRPvrrAW3gh1fPcwL3fjlcd6QlfDDCA/formResponse" target="result" method="post" id="form1">
    <h1 style="text-align: center;"> 류현식의 모의고사 </h1>
     <hr>
    <div> 
      <fieldset>
          <legend> 학번 & 이름</legend>  
-       <input type="number" title="학번" name="entry.1908590830" size="6" placeholder="학번" style="width: 6em;" autofocus required> 
-       <input type="text" title="이름" name="entry.1775512469" size="10" placeholder="이름" style="margin-left:3em;" autofocus required> 
+       <input type="number" title="학번" name="entry.1908590830" id="grade" placeholder="학번" style="width: 6em;" autofocus required> 
+       <input type="text" title="이름" name="entry.1775512469" id="name" placeholder="이름" style="margin-left:3em; width: 6em;" autofocus required> 
      </fieldset>
    </div>
    <hr>
    <div> 
     <fieldset>
         <legend> 학년도 & 월</legend>  
-      <input type="number" title="6" name="entry.727294695" size="10" placeholder="학년도" style="width: 6em;" autofocus required> 
-      <input type="number" title="3" name="entry.888342379" size="10" placeholder="월" style="margin-left:3em; width: 6em;" autofocus required> 
+      <input type="number" title="학년도" name="entry.727294695" id="year" placeholder="학년도" style="width: 6em;" autofocus required> 
+      <input type="number" title="월" name="entry.888342379" id="month" placeholder="월" style="margin-left:3em; width: 6em;" autofocus required> 
     </fieldset>
   </div>
       <hr>
    <div> 
      <fieldset>
         <legend>선택과목</legend>
-        <label> 언매 <input type="radio" class="radio" name="entry.585978889" value="언매" autofocus required> </label> &nbsp &nbsp
-        <label> 화작 <input type="radio" class="radio" name="entry.585978889" value="화작" autofocus required> </label>  &nbsp &nbsp
-        <label> 없음(1학년) <input type="radio" class="radio" name="entry.585978889" value="없음" autofocus required> </label>  &nbsp &nbsp
+        <label> 언매 <input type="radio" class="radio" id="selec" name="entry.585978889" value="언매" autofocus required> </label> &nbsp &nbsp
+        <label> 화작 <input type="radio" class="radio" id="selec" name="entry.585978889" value="화작" autofocus required> </label>  &nbsp &nbsp
+        <label> 없음(1학년) <input type="radio" class="radio" id="selec" name="entry.585978889" value="없음" autofocus required> </label>  &nbsp &nbsp
     </fieldset> 
    </div>
      <hr>
@@ -467,7 +467,24 @@
        
     </div>
   <div>  
-      <input type="submit" value="제출하기" style="margin: 0.5em;">
+      <input type="submit" value="제출하기" style="margin: 0.5em;" onclick="alertWindow()">
+      <input type="reset" value="초기화" style="margin: 0.5em;">
+      <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
+      <script>
+        function alertWindow(){
+            var grade = document.getElementById("grade");
+            var name = document.getElementById("name");
+            var year = document.getElementById("year");
+            var month = document.getElementById("month");
+            var selec = document.getElementById("selec");
+            
+            if (grade.value=="" || name.value=="" || year.value=="" || month.value=="" || selec.value=="") {
+             alert("학번, 이름, 학년도, 월, 선택과목을 확인하세요")
+             } else {
+               alert("제출완료")    
+             } 
+        }
+    </script>
   </div>
 </form>
 </div>
