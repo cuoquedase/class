@@ -37,32 +37,57 @@
             border: 0.1em;
         }
 
-
      @media screen and (min-width:320px){
-       .content-wrap {
+      #container{
+        width: 90%
+      }
+      .content-wrap {
          width:90%
        }
      }
 
-     @media screen and (min-width:768px){
+     @media screen and (min-width:768px) and (min-width: 1024px){
+      #container{
+         width: 100%;
+         margin-right: 5%;
+         margin-left: 5%;
+       }
        .content-wrap {
-         width:70% 
+         width:48%;
+         height: 40em;
+         float: left;
+         margin-top: 5%;
+         margin-bottom: 5%;
+         margin-left: auto;
+         margin-right: auto;
        }
      }
 
      @media screen and (min-width:1024px){
+       #container{
+         width: 100%;
+         margin-right: 5%;
+         margin-left: 5%;
+       }
        .content-wrap {
-         width:50%
-
-         }
+         width:48%;
+         height: 40em;
+         float: left;
+         margin-top: 5%;
+         margin-bottom: 5%;
+         margin-left: auto;
+         margin-right: auto;
+         
+       }  
      }
     </style>
 </head>
 <body>
-  <div class="content-wrap" style="30em">
-    <iframe src="https://docs.google.com/document/d/1sI4Ycbatl3-GqIc35uM7pkBcZrhN2TrMhrSY6JgRBU0/edit?usp=sharing" style="width: 98%; height:28em"></iframe>
+ <div id="container">
+  <div class="content-wrap">
+    <iframe src="https://docs.google.com/document/d/1sI4Ycbatl3-GqIc35uM7pkBcZrhN2TrMhrSY6JgRBU0/edit?usp=sharing" style="width: 98%; height:40em"></iframe>
   </div>
-  <div class="content-wrap" style="overflow:scroll; height: 20em;">
+  <div class="content-wrap" style="overflow:scroll; ">
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" target="result" method="post">
    <h1 style="text-align: center;">수업 활동지</h1>
     <hr>
@@ -125,6 +150,7 @@
           <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
    </div>
 </form>
+</div>
 </div>
 </body>
 </html>
