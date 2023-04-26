@@ -56,6 +56,21 @@
          }
      }
     </style>
+    <script>
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.getElementById("toggle-password");
+
+        toggleButton.addEventListener("click", function() {
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleButton.textContent = "비밀번호 숨기기";
+           } else {
+           passwordInput.type = "password";
+          toggleButton.textContent = "비밀번호 표시";
+         }
+        });
+    </script>    
+
 </head>
 <body>
  <div class="content-wrap">
@@ -69,7 +84,10 @@
           <input type="number" name="entry.575609189" min="1" max="10" title="반" style="size: 3em;" autofocus required> 반           
           <input type="number" name="entry.1986804342" min="1" max="50" title="번호" style="size: 3em; margin-left: 1em;" autofocus required> 번
             <hr>
-          <input type="text" title="이름" name="entry.1440774959" size="10" placeholder="이름"  autofocus required> 
+          <input type="text" title="이름" name="entry.1440774959" size="10" placeholder="이름"  autofocus required>
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password">
+            <button id="toggle-password">비밀번호 표시</button>
         </fieldset>
       </div>
       <hr>
