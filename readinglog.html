@@ -6,6 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
     <title>독서일지</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script>
+        // Check javascript has loaded
+        $(document).ready(function(){
+        
+        // Click event of the showPassword button
+        $('#showPassword').on('click', function(){
+        
+          // Get the password field
+          var passwordField = $('#password');
+        
+          // Get the current type of the password field will be password or text
+          var passwordFieldType = passwordField.attr('type');
+        
+          // Check to see if the type is a password field
+          if(passwordFieldType == 'password')
+          {
+              // Change the password field to text
+              passwordField.attr('type', 'text');
+        
+              // Change the Text on the show password button to Hide
+              $(this).val('숨기기');
+          } else {
+              // If the password field type is not a password field then set it to password
+              passwordField.attr('type', 'password');
+        
+              // Change the value of the show password button to Show
+              $(this).val('보이기');
+          }
+        });
+        });
+    </script>   
     <style>
 @font-face {
     font-family: 'TheJamsil5Bold';
@@ -71,24 +103,10 @@
             <hr>
         </div>         
         <div style="line-height:200%;">             
-          이름:<input type="text" title="이름" name="entry.1440774959" size="10" placeholder="이름"  autofocus required> <br>
-            <label for="password">비밀번호:</label>
-            <input type="password" id="password" size="10" name="password" placeholder="비밀번호" autofocus required>
-            <button id="toggle-password" style="font-family:TheJamsil5Bold;" size="8">비밀번호 표시</button>
-                <script>
-        const passwordInput = document.getElementById("password");
-        const toggleButton = document.getElementById("toggle-password");
+          이름: <input type="text" title="이름" name="entry.1440774959" size="10" placeholder="이름"  autofocus required> <br>
+            <label for="password">비밀번호: </label><input type="password" size="10" name="111" id="password" placeholder="비밀번호" /> 
+            <input type="button" style="font-family: TheJamsil5Bold;"id="showPassword" value="보이기" class="button" />
 
-        toggleButton.addEventListener("click", function() {
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          toggleButton.textContent = "비밀번호 숨기기";
-           } else {
-           passwordInput.type = "password";
-          toggleButton.textContent = "비밀번호 표시";
-         }
-        });
-    </script>   
         </div>
       </fieldset>
       <hr>
