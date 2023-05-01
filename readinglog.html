@@ -132,10 +132,20 @@
          <Textarea name="entry.815714959" style="width: 98%;" rows="10" placeholder="오늘 읽은 부분 중 자신의 경험 또는 진로와 연관지어 봅시다." minlength="500" autofocus required></Textarea>
       </fieldset>
    </div>
-   <div>    
-    <input type="submit" value="제출하기" style="margin: 10px; font-family: TheJamsil5Bold;">
- </div>
-      <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
+    <div>  
+         <input type="submit" value="제출하기" style="margin: 0.5em;" onclick="numberCheck()">
+         <!-- <input type="button" value="확인하기" onClick="window.open('https://docs.google.com/spreadsheets/d/e/2PACX-1vTwlg5mbX_iHgwaF2U7ZhNR-SSKf1xo4gfUcbwmX21RykXeSZUGg6DU8q3-6bDcNcjBuZrgsKMKP32I/pubhtml')"> -->
+          <script>
+            function numberCheck(){
+              if(confirm("차시를 확인했습니까?")==true){
+                alert("제출하였습니다.")
+              }else{
+                return alert("취소하였습니다.");
+              }
+            }  
+          </script>
+          <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
+   </div>
 </form>
 </div>
 </body>
