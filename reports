@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
+    <title>창의적 체험활동 소감문</title>
+    <style>
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+      body{
+  font-family:'TheJamsil5Bold';
+  background-image:url('https://source.unsplash.com/user/impatrickt');
+  background-size:100%;
+          font-size:1em;
+      }
+        .content-wrap{
+          background-color: white;
+          margin-left: auto;
+          margin-right: auto;
+          width: 85%;
+          border: 0.3rem;
+          padding: 0.3rem;
+          border-style: groove;
+          border-radius: 3%;
+          border-color: black;
+
+        }
+        .radio{
+            width: 1em;
+            height: 1em;
+            border: 0.1em;
+        }
+
+     @media screen and (min-width:320px){
+       .content-wrap {
+         width:90%
+       }
+     }
+
+     @media screen and (min-width:768px){
+       .content-wrap {
+         width:70% 
+       }
+     }
+
+     @media screen and (min-width:1024px){
+       .content-wrap {
+         width:40%
+
+         }
+     }
+    </style>
+</head>
+<body onpaste="return false">
+ <div class="content-wrap">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzkf-yPTXi08cBkP7IPOdawT4pjjgurkkrLa9YYStkVQieMQ/formResponse" target="result" method="post">
+   <h1 style="text-align: center; font-size: 3em;">창의적 체험활동 소감문</h1>
+    <br>
+      <fieldset style="font-size: 1.3em;">
+        <legend>인적사항</legend>
+          <input type="radio"  name="entry.1408123869" autofocus required value="1"> 1학년 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1408123869" autofocus required value="2"> 2학년 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1408123869" autofocus required value="3"> 3학년
+          <hr>
+          <input type="radio"  name="entry.1763979247" autofocus required value="1"> 1반 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1763979247" autofocus required value="2"> 2반 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1763979247" autofocus required value="3"> 3반 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1763979247" autofocus required value="4"> 4반 <br>
+          <input type="radio"  name="entry.1763979247" autofocus required value="5"> 5반 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1763979247" autofocus required value="6"> 6반 &nbsp;&nbsp;
+          <input type="radio"  name="entry.1763979247" autofocus required value="7"> 7반 &nbsp;&nbsp;
+          <hr> 번호: <input type="number" name="entry.1900354692" min="1" max="50" title="번호" style="size: 3em; margin-left: 1em;" autofocus required> 번 &nbsp; &nbsp;
+          이름: <input type="text" title="이름" name="entry.1581511566" size="10" placeholder="이름"  autofocus required> <br>
+      </fieldset>
+      <br>
+      <hr>
+      <br>
+        <fieldset style="font-size: 1.3em;">
+            <legend> 활동 내용</legend>
+            <input type="radio"  name="entry.875212296" autofocus required value="생활안전교육"> 생활안전교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="교통안전교육"> 교통안전교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="학교폭력예방교육"> 학교폭력예방교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="약물 및 사이버중독 예방교육"> 약물 및 사이버중독 예방교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="재난안전교육"> 재난안전교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="직업안전교육"> 직업안전교육<br>
+            <input type="radio"  name="entry.875212296" autofocus required value="응급처치교육"> 응급처치교육
+        </fieldset>      
+        <br>
+        <hr>
+        <br>
+   <div>  
+      <fieldset>
+         <legend style="font-size: 1.3em;"> 활동 요약 </legend>
+         <Textarea name="entry.461514449" style="width:98%" rows="10" placeholder="시청한 영상 내용이나 활동한 내용을 요약하세요." autofocus required></Textarea>
+     </fieldset>
+   </div>
+   <br>
+   <hr>
+   <br>
+   <div>    
+      <fieldset>
+         <legend style="font-size: 1.3em;">인상적인 활동과 이유</legend>
+         <Textarea name="entry.772478415" style="width: 98%;" rows="10" placeholder="인상적이었던 활동 내용을 선정하여 이유를 서술하세요" autofocus required></Textarea>
+      </fieldset>
+   </div>
+    <div>
+        <p style="color: red; font-size: 1.5em;">빈칸이 없는 경우에만 제출 완료됨. <br> 제출 완료시 별도의 창이 뜨지 않음.</p>
+        <input type="submit" value="제출하기" style="margin: 0.5em;">
+        <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
+   </div>
+</form>
+</div>
+</body>
+</html>
