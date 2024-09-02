@@ -42,20 +42,21 @@
         cursor: pointer;
         }
         .radio label {
-        width: 1em;
-        height: 1em;
+        width: 0.5rem;
+        height: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%;
-        border: 0.1em solid #000;
+        border-radius: 0.5rem;
+        border: 0.12em solid #000;
         text-align: center;
         font-weight: bold;
         cursor: pointer;
+        font-size: 0.8em;
         }
         .radio input:checked + label {
-        background-color: blue;
-        color: white;
+        background-color: black;
+        color: black;
         }
 
         .table{
@@ -103,7 +104,7 @@
    <div>
    <div> 
         <fieldset>
-            <legend> 실시 년도 / 문제 & 월 / 회차</legend>  
+            <legend> 실시 년도 / 문제 & 월 / 회차</legend>  
           <input type="text" title="실시 년도 / 문제" name="entry.1383876584" id="grade" placeholder="실시 년도 / 문제" style="width: 8em;" autofocus required> 
           <input type="number" title="월 / 회차" name="entry.194725686" id="name" placeholder="월 / 회차" style="margin-left:3em; width: 8em;" autofocus required> 
         </fieldset>
@@ -517,5 +518,11 @@
             return true; // 폼 제출 허용
         }
     }
+    document.querySelectorAll('.radio label').forEach(label => {
+  label.addEventListener('click', function(event) {
+    event.preventDefault(); // 기본 동작 방지
+  });
+});
+
   </script>
 </html>
