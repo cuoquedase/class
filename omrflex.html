@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-    <title> 수능 & 모의고사 OMR </title>
+    <title> 온라인 OMR </title>
     <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
     <style>
         @font-face {
@@ -106,7 +106,26 @@
                 flex-direction: column;
                }                 
                 }
-             
+
+             @media screen and (min-width:1600px){
+               .content-wrap {
+                 width:70%;
+                 display: flex;
+                 flex-direction: row;
+                 flex-wrap: wrap;
+                 align-items: center;
+                }
+               .flex{
+                 display: flex;
+                 flex-direction: row;
+                 flex-grow: 1;
+               }
+               .fieldset{
+                display: flex;
+                flex-direction: column;
+               }                 
+                }
+                          
             </style>
 </head>
 <body>
@@ -114,7 +133,7 @@
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG2sgtXTZ0ZQ6zir99IeYpWvjc1k01aYanr7h-ZqbSMJU8fw/formResponse" class="flex" target="result" method="post" id="form1" onsubmit="return validateForm()">
    <div class="flex">
     <div> 
-        <h1 style="text-align: center;"> 온라인 OMR </h1>
+        <h1 style="text-align: center; font: 1em ;"> 온라인 OMR </h1>
         <fieldset style="margin: auto;">
             <legend> 수업년도 & 반</legend>  
           <input type="number" title="수업년도" name="entry.1839554895" id="grade" placeholder="수업년도" style="width: 8em;" autofocus required> 
