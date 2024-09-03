@@ -4,125 +4,152 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-    <title> 수능 & 모의고사 OMR </title>
+    <title> 온라인 OMR </title>
     <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
     <style>
-@font-face {
-    font-family: 'GongGothicMedium';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-      body{
-  font-family:'GongGothicMedium';
-  background-image:url('https://source.unsplash.com/user/impatrickt');
-  background-size:100%;
-          font-size:1em;
-      }
-        .content-wrap{
-          background-color: white;
-          margin-left: auto;
-          margin-right: auto;
-          width: 85%;
-          border: 0.3rem;
-          padding: 0.3rem;
-          border-style: groove;
-          border-radius: 3%;
-          border-color: #05a500ab;
-          color: #5fa84db9;
+        @font-face {
+            font-family: 'GongGothicMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
         }
-
-        .radio {
-        display: inline-block;
-        position: relative;
-        margin-right: 0.1em;
-        }
-        .radio input {
-        position: absolute;
-         opacity: 0;
-        cursor: pointer;
-        }
-        .radio label {
-        width: 0.7rem;
-        height: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 0.5rem;
-        border: 0.12em solid #ff7676;
-        text-align: center;
-        font-weight: bold;
-        cursor: pointer;
-        font-size: 0.8em;
-        color: #ff7676;
-        }
-        .radio input:checked + label {
-        background-color: black;
-        color: black;
-        border: black;
-        }
-
-        .table{
-            vertical-align: top;
-            height: 2em;
-            width: 80%;
-        }
-
-        .table2{
-            vertical-align: top;
-            height: 3em;
-            width: 80%;
-        }
+              body{
+          font-family:'GongGothicMedium';
+          background-image:url('https://source.unsplash.com/user/impatrickt');
+          background-size:100%;
+                  font-size:1em;
+              }
+                .content-wrap{
+                  background-color: white;
+                  margin-left: auto;
+                  margin-right: auto;
+                  width: 85%;
+                  border: 0.3rem;
+                  padding: 0.3rem;
+                  border-style: groove;
+                  border-radius: 3%;
+                  border-color: #05a500ab;
+                  color: #5fa84db9;
+                }
         
+                .radio {
+                display: inline-block;
+                position: relative;
+                margin-right: 0.1em;
+                }
+                .radio input {
+                position: absolute;
+                 opacity: 0;
+                cursor: pointer;
+                }
+                .radio label {
+                width: 0.8rem;
+                height: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0.5rem;
+                border: 0.12em solid #ff7676;
+                text-align: center;
+                font-weight: bold;
+                cursor: pointer;
+                font-size: 0.8em;
+                color: #ff7676;
+                }
+                .radio input:checked + label {
+                background-color: black;
+                color: black;
+                border: black;
+                }
+        
+                .table{
+                    vertical-align: top;
+                    height: 2em;
+                    width: 80%;
+                }
+        
+                .table2{
+                    vertical-align: top;
+                    height: 3em;
+                    width: 80%;
+                }
+                
 
-     @media screen and (min-width:320px){
-       .content-wrap {
-         width:95%
-       }
-     }
+        
+             @media screen and (min-width:320px){
+               .content-wrap {
+                 width:95%;
+               }
+             }
+        
+             @media screen and (min-width:768px){
+               .content-wrap {
+                 width:50%;
+               }
+             }
+        
+             @media screen and (min-width:1180px){
+               .content-wrap {
+                 width:95%;
+                 display: flex;
+                 flex-direction: row;
+                 flex-wrap: wrap;
+                 align-items: center;
+                }
+               .flex{
+                 display: flex;
+                 flex-direction: row;
+                 flex-grow: 1;
+               }
+               .fieldset{
+                display: flex;
+                flex-direction: column;
+               }                 
+                }
 
-     @media screen and (min-width:768px){
-       .content-wrap {
-         width:50% 
-       }
-     }
-
-     @media screen and (min-width:1024px){
-       .content-wrap {
-         width:25%
-
-         }
-     }
-    </style>
+             @media screen and (min-width:1600px){
+               .content-wrap {
+                 width:70%;
+                 display: flex;
+                 flex-direction: row;
+                 flex-wrap: wrap;
+                 align-items: center;
+                }
+               .flex{
+                 display: flex;
+                 flex-direction: row;
+                 flex-grow: 1;
+               }
+               .fieldset{
+                display: flex;
+                flex-direction: column;
+               }                 
+                }
+                          
+            </style>
 </head>
 <body>
   <div class="content-wrap" style="overflow:scroll; background-color: #fcfbe7;">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG2sgtXTZ0ZQ6zir99IeYpWvjc1k01aYanr7h-ZqbSMJU8fw/formResponse" target="result" method="post" id="form1" onsubmit="return validateForm()">
-   <h1 style="text-align: center;"> 수능 & 모의고사 OMR </h1>
-    <hr>
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG2sgtXTZ0ZQ6zir99IeYpWvjc1k01aYanr7h-ZqbSMJU8fw/formResponse" class="flex" target="result" method="post" id="form1" onsubmit="return validateForm()">
+   <div class="flex">
     <div> 
-        <fieldset>
+        <h1 style="text-align: center; font: 1em ;"> 온라인 OMR </h1>
+        <fieldset style="margin: auto;">
             <legend> 수업년도 & 반</legend>  
           <input type="number" title="수업년도" name="entry.1839554895" id="grade" placeholder="수업년도" style="width: 8em;" autofocus required> 
-          <input type="text" title="반" name="entry.1793974970" id="name" placeholder="반" style="margin-left:3em; width: 8em;" autofocus required> 
+          <input type="text" title="반" name="entry.1793974970" id="name" placeholder="반" style=" width: 8em;" autofocus required> 
         </fieldset>
-      </div>
-   <div>
-   <div> 
         <fieldset>
             <legend> 실시 년도 / 문제 & 월 / 회차</legend>  
           <input type="text" title="실시 년도 / 문제" name="entry.1383876584" id="grade" placeholder="실시 년도 / 문제" style="width: 8em;" autofocus required> 
-          <input type="number" title="월 / 회차" name="entry.194725686" id="name" placeholder="월 / 회차" style="margin-left:3em; width: 8em;" autofocus required> 
-        </fieldset>
-      </div>      
+          <input type="number" title="월 / 회차" name="entry.194725686" id="name" placeholder="월 / 회차" style=" width: 8em;" autofocus required> 
+        </fieldset>    
      <fieldset>
          <legend> 생년월일 & 이름</legend>  
        <input type="number" title="생년월일" name="entry.1531838186" id="grade" placeholder="생년월일" style="width: 8em;" autofocus required> 
-       <input type="text" title="이름" name="entry.1096808721" id="name" placeholder="이름" style="margin-left:3em; width: 8em;" autofocus required> 
+       <input type="text" title="이름" name="entry.1096808721" id="name" placeholder="이름" style=" width: 8em;" autofocus required> 
      </fieldset>
-   </div>
       <hr>
-   <div> 
      <fieldset>
         <legend>선택과목</legend>
         <label> 언매 <input type="radio" class="radio" id="selec" name="entry.998653024" value="언매" autofocus required> </label>
@@ -130,15 +157,14 @@
         <label> 화작 <input type="radio" class="radio" id="selec" name="entry.998653024" value="화작" autofocus required> </label>
     </fieldset> 
    </div>
+   </div>
      <hr>
-   <div>  
-
-     <fieldset>
-     <legend>답</legend>
-     <br>
-       <table width="100%" class="table" style="margin: auto;">
+   <div class="flex">  
+     <fieldset class="fieldset">
+     <legend>공통과목</legend>
+        <table width="120%" class="table" style="margin-left: auto; margin-right: auto;">
          <tr class="table">
-          <th scope="row"  width="20%"> 1번 </th>
+          <th scope="row"  width="10%"> 1 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.35303890" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.35303890" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.35303890" value="3"><label for="q1-3">3</label></div> </td>
@@ -146,7 +172,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.35303890" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 2번 </th>
+          <th scope="row"> 2 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.494512470" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.494512470" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.494512470" value="3"><label for="q1-3">3</label></div> </td>
@@ -154,7 +180,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.494512470" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 3번 </th>
+          <th scope="row"> 3 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.381111803" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.381111803" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.381111803" value="3"><label for="q1-3">3</label></div> </td>
@@ -162,7 +188,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.381111803" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 4번 </th>
+          <th scope="row"> 4 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.673876794" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.673876794" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.673876794" value="3"><label for="q1-3">3</label></div> </td>
@@ -170,7 +196,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.673876794" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-          <th scope="row"> 5번 </th>
+          <th scope="row"> 5 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1998505744" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1998505744" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1998505744" value="3"><label for="q1-3">3</label></div> </td>
@@ -178,7 +204,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1998505744" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 6번 </th>
+          <th scope="row"> 6 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.835070770" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.835070770" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.835070770" value="3"><label for="q1-3">3</label></div> </td>
@@ -186,7 +212,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.835070770" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 7번 </th>
+          <th scope="row"> 7 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1097594947" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1097594947" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1097594947" value="3"><label for="q1-3">3</label></div> </td>
@@ -194,7 +220,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1097594947" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 8번 </th>
+          <th scope="row"> 8 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.587289065" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.587289065" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.587289065" value="3"><label for="q1-3">3</label></div> </td>
@@ -202,7 +228,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.587289065" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 9번 </th>
+          <th scope="row"> 9 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.240002546" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.240002546" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.240002546" value="3"><label for="q1-3">3</label></div> </td>
@@ -210,15 +236,22 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.240002546" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-          <th scope="row"> 10번 </th>
+          <th scope="row"> 10 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1481569419" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1481569419" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1481569419" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1481569419" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1481569419" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
-         <tr class="table">
-          <th scope="row"  width="20%"> 11번 </th>
+        </div>
+     </table>
+    </fieldset>
+    <fieldset class="fieldset">
+        <legend>공통과목</legend>
+    <div>
+        <table width="100%" class="table" style="margin: auto;">     
+         <tr class="table">     
+          <th scope="row"  width="10%"> 11 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.352224427" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.352224427" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.352224427" value="3"><label for="q1-3">3</label></div> </td>
@@ -226,7 +259,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.352224427" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 12번 </th>
+          <th scope="row"> 12 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1757629310" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1757629310" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1757629310" value="3"><label for="q1-3">3</label></div> </td>
@@ -234,7 +267,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1757629310" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 13번 </th>
+          <th scope="row"> 13 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.617969311" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.617969311" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.617969311" value="3"><label for="q1-3">3</label></div> </td>
@@ -242,7 +275,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.617969311" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 14번 </th>
+          <th scope="row"> 14 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.889491162" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.889491162" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.889491162" value="3"><label for="q1-3">3</label></div> </td>
@@ -250,7 +283,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.889491162" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-          <th scope="row"> 15번 </th>
+          <th scope="row"> 15 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.796033949" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.796033949" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.796033949" value="3"><label for="q1-3">3</label></div> </td>
@@ -258,7 +291,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.796033949" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 16번 </th>
+          <th scope="row"> 16 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1113259502" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1113259502" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1113259502" value="3"><label for="q1-3">3</label></div> </td>
@@ -266,7 +299,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1113259502" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 17번 </th>
+          <th scope="row"> 17 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1012471945" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1012471945" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1012471945" value="3"><label for="q1-3">3</label></div> </td>
@@ -274,14 +307,14 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1012471945" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 18번 </th>
+          <th scope="row"> 18 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1318283290" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1318283290" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1318283290" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1318283290" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1318283290" value="5"><label for="q1-5">5</label></div> </td>
          <tr class="table">
-          <th scope="row"> 19번 </th>
+          <th scope="row"> 19 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1828465576" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1828465576" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1828465576" value="3"><label for="q1-3">3</label></div> </td>
@@ -289,15 +322,22 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1828465576" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-          <th scope="row"> 20번 </th>
+          <th scope="row"> 20 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1861476816" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1861476816" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1861476816" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1861476816" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1861476816" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
+        </table>
+        </div>
+     </fieldset>
+     <fieldset class="fieldset">
+        <legend>공통과목</legend>
+    <div>
+     <table width="100%" class="table" style="margin: auto;">     
          <tr class="table">
-          <th scope="row"  width="20%"> 21번 </th>
+          <th scope="row"  width="10%"> 21 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1980497801" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1980497801" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1980497801" value="3"><label for="q1-3">3</label></div> </td>
@@ -305,7 +345,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1980497801" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 22번 </th>
+          <th scope="row"> 22 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.725760198" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.725760198" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.725760198" value="3"><label for="q1-3">3</label></div> </td>
@@ -313,7 +353,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.725760198" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 23번 </th>
+          <th scope="row"> 23 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1104780353" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1104780353" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1104780353" value="3"><label for="q1-3">3</label></div> </td>
@@ -321,7 +361,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1104780353" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 24번 </th>
+          <th scope="row"> 24 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1391316581" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1391316581" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1391316581" value="3"><label for="q1-3">3</label></div> </td>
@@ -329,7 +369,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1391316581" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-          <th scope="row"> 25번 </th>
+          <th scope="row"> 25 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.482730441" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.482730441" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.482730441" value="3"><label for="q1-3">3</label></div> </td>
@@ -337,7 +377,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.482730441" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 26번 </th>
+          <th scope="row"> 26 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1260484503" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1260484503" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1260484503" value="3"><label for="q1-3">3</label></div> </td>
@@ -345,7 +385,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1260484503" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 27번 </th>
+          <th scope="row"> 27 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.675602136" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.675602136" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.675602136" value="3"><label for="q1-3">3</label></div> </td>
@@ -353,7 +393,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.675602136" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 28번 </th>
+          <th scope="row"> 28 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1382013265" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1382013265" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1382013265" value="3"><label for="q1-3">3</label></div> </td>
@@ -361,7 +401,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1382013265" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 29번 </th>
+          <th scope="row"> 29 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1899258763" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1899258763" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1899258763" value="3"><label for="q1-3">3</label></div> </td>
@@ -369,15 +409,22 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1899258763" value="5"><label for="q1-5">5</label></div> </td>
          </tr>                                                                       
          <tr class="table2">
-          <th scope="row"> 30번 </th>
+          <th scope="row"> 30 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1830328200" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1830328200" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1830328200" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1830328200" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1830328200" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
+         </table>
+         </div>
+         </fieldset>
+         <fieldset class="fieldset">
+            <legend>공통과목</legend>
+    <div>
+      <table width="100%" class="table" style="margin: auto;">     
          <tr class="table">
-          <th scope="row"  width="20%"> 31번 </th>
+          <th scope="row"  width="10%"> 31 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1295023548" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1295023548" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1295023548" value="3"><label for="q1-3">3</label></div> </td>
@@ -385,7 +432,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1295023548" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 32번 </th>
+          <th scope="row"> 32 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1255962117" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1255962117" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1255962117" value="3"><label for="q1-3">3</label></div> </td>
@@ -393,23 +440,30 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1255962117" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 33번 </th>
+          <th scope="row"> 33 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1861931726" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1861931726" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1861931726" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1861931726" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1861931726" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
-         <tr class="table">
-          <th scope="row"> 34번 </th>
+         <tr class="table2">
+          <th scope="row"> 34 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1288003184" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1288003184" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1288003184" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1288003184" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1288003184" value="5"><label for="q1-5">5</label></div> </td>
-         </tr> 
+         </tr>
+         </table>
+         </div>
+         </fieldset>
+         <fieldset class="fieldset">
+            <legend>선택과목</legend>
+    <div>
+      <table width="100%" class="table" style="margin: auto;">              
          <tr class="table2">
-            <th scope="row"> 35번 </th>
+            <th scope="row" width="10%"> 35 </th>
             <td> <div class="radio"><input type="radio" id="q1-1" name="entry.825233463" value="1"><label for="q1-1">1</label></div> </td>
             <td> <div class="radio"><input type="radio" id="q1-2" name="entry.825233463" value="2"><label for="q1-2">2</label></div> </td>
             <td> <div class="radio"><input type="radio" id="q1-3" name="entry.825233463" value="3"><label for="q1-3">3</label></div> </td>
@@ -417,7 +471,7 @@
             <td> <div class="radio"><input type="radio" id="q1-5" name="entry.825233463" value="5"><label for="q1-5">5</label></div> </td>
            </tr> 
            <tr class="table">
-          <th scope="row"  width="20%"> 36번 </th>
+          <th scope="row"  width="10%"> 36 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.108202713" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.108202713" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.108202713" value="3"><label for="q1-3">3</label></div> </td>
@@ -425,7 +479,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.108202713" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 37번 </th>
+          <th scope="row"> 37 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.109411815" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.109411815" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.109411815" value="3"><label for="q1-3">3</label></div> </td>
@@ -433,7 +487,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.109411815" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 38번 </th>
+          <th scope="row"> 38 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.494658644" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.494658644" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.494658644" value="3"><label for="q1-3">3</label></div> </td>
@@ -441,7 +495,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.494658644" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 39번 </th>
+          <th scope="row"> 39 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1151540371" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1151540371" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1151540371" value="3"><label for="q1-3">3</label></div> </td>
@@ -449,7 +503,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1151540371" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table2">
-            <th scope="row"> 40번 </th>
+            <th scope="row"> 40 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.343703774" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.343703774" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.343703774" value="3"><label for="q1-3">3</label></div> </td>
@@ -457,7 +511,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.343703774" value="5"><label for="q1-5">5</label></div> </td>
            </tr> 
          <tr class="table">
-          <th scope="row"  width="20%"> 41번 </th>
+          <th scope="row"  width="10%"> 41 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1009390717" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1009390717" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1009390717" value="3"><label for="q1-3">3</label></div> </td>
@@ -465,7 +519,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1009390717" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table"> 
-          <th scope="row"> 42번 </th>
+          <th scope="row"> 42 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1623780772" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1623780772" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1623780772" value="3"><label for="q1-3">3</label></div> </td>
@@ -473,7 +527,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1623780772" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 43번 </th>
+          <th scope="row"> 43 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.663172793" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.663172793" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.663172793" value="3"><label for="q1-3">3</label></div> </td>
@@ -481,7 +535,7 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.663172793" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
          <tr class="table">
-          <th scope="row"> 44번 </th>
+          <th scope="row"> 44 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.93949759" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.93949759" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.93949759" value="3"><label for="q1-3">3</label></div> </td>
@@ -489,23 +543,24 @@
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.93949759" value="5"><label for="q1-5">5</label></div> </td>
          </tr> 
          <tr class="table">
-          <th scope="row"> 45번 </th>
+          <th scope="row"> 45 </th>
           <td> <div class="radio"><input type="radio" id="q1-1" name="entry.1402832302" value="1"><label for="q1-1">1</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-2" name="entry.1402832302" value="2"><label for="q1-2">2</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-3" name="entry.1402832302" value="3"><label for="q1-3">3</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-4" name="entry.1402832302" value="4"><label for="q1-4">4</label></div> </td>
           <td> <div class="radio"><input type="radio" id="q1-5" name="entry.1402832302" value="5"><label for="q1-5">5</label></div> </td>
          </tr>
-         
-      </table>    
+        </table>
+        </div>    
      </fieldset>
-       
     </div>
-  <div>  
-      <input type="submit" value="제출하기" style="margin: 0.5em;">
-      <input type="reset" value="초기화" style="margin: 0.5em;">
-      <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
-  </div>
+    <div>  
+        <input type="submit" value="제출하기" style="margin: 0.5em;">
+        <input type="reset" value="초기화" style="margin: 0.5em;">
+        <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
+    </div>
+</div>
+
 </form>
 </div>
 </body>
