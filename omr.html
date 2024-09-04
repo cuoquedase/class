@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-    <title> 온라인 OMR </title>
+    <title> 국어영역 온라인 OMR </title>
     <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
     <style>
         @font-face {
@@ -100,14 +100,19 @@
                  display: flex;
                  flex-direction: row;
                  flex-grow: 1;
+                 justify-content: center;
                }
                .fieldset{
                 display: flex;
                 flex-direction: column;
-               }                 
-                }
+               }
+               .p-media{
+                width: 29rem;
+               }             
+                }                 
+                
 
-             @media screen and (min-width:1600px){
+             @media screen and (min-width:1500px){
                .content-wrap {
                  width:70%;
                  display: flex;
@@ -119,12 +124,17 @@
                  display: flex;
                  flex-direction: row;
                  flex-grow: 1;
+                 justify-content: center;
                }
                .fieldset{
                 display: flex;
                 flex-direction: column;
-               }                 
+               }    
+               .p-media{
+                width: 29rem;
+               }             
                 }
+                
                           
             </style>
 </head>
@@ -133,34 +143,40 @@
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG2sgtXTZ0ZQ6zir99IeYpWvjc1k01aYanr7h-ZqbSMJU8fw/formResponse" class="flex" target="result" method="post" id="form1" onsubmit="return validateForm()">
    <div class="flex">
     <div> 
-        <h1 style="text-align: center; font: 1em ;"> 온라인 OMR </h1>
-        <fieldset style="margin: auto;">
+        <h1 style="text-align: center; font: 1em ;"> 국어영역 온라인 OMR </h1>
+        <fieldset style="margin: auto; border-color: #05a500ab;">
             <legend> 수업년도 & 반</legend>  
           <input type="number" title="수업년도" name="entry.1839554895" id="grade" placeholder="수업년도" style="width: 8em;" autofocus required> 
           <input type="text" title="반" name="entry.1793974970" id="name" placeholder="반" style=" width: 8em;" autofocus required> 
+          <br><p class="p-media" style="color: #ff7676; font-size: 0.9rem;"> *수업년도: 올해를 숫자로만 입력 <br>예) 2024
+          <br>
+          <br>*반: 선생님의 안내에 따라 입력 <br>예) A, 1 등 </p>
         </fieldset>
-        <fieldset>
+        <fieldset style="border-color: #05a500ab;">
             <legend> 실시 년도 / 문제 & 월 / 회차</legend>  
           <input type="text" title="실시 년도 / 문제" name="entry.1383876584" id="grade" placeholder="실시 년도 / 문제" style="width: 8em;" autofocus required> 
           <input type="number" title="월 / 회차" name="entry.194725686" id="name" placeholder="월 / 회차" style=" width: 8em;" autofocus required> 
+          <br><p class="p-media" style="color: #ff7676; font-size: 0.9rem;"> *실시 년도 / 문제: 모의고사 또는 문제지의 이름을 선생님의 안내에 따라 입력 <Br>예) 2024전국연합, 2025수능완성 등
+            <br>
+            <br>*월 / 회차: 모의고사의 n월이나 문제의 n회차를 숫자로만 입력 <Br>예) 1, 2 등 </p>
         </fieldset>    
-     <fieldset>
+     <fieldset style="border-color: #05a500ab;">
          <legend> 생년월일 & 이름</legend>  
        <input type="number" title="생년월일" name="entry.1531838186" id="grade" placeholder="생년월일" style="width: 8em;" autofocus required> 
        <input type="text" title="이름" name="entry.1096808721" id="name" placeholder="이름" style=" width: 8em;" autofocus required> 
      </fieldset>
       <hr>
-     <fieldset>
+     <fieldset style="color: rgb(80, 79, 79); border-color: #05a500ab;">
         <legend>선택과목</legend>
-        <label> 언매 <input type="radio" class="radio" id="selec" name="entry.998653024" value="언매" autofocus required> </label>
+        <label> 언어와 매체 <input type="radio" class="radio" id="selec" name="entry.998653024" value="언매" autofocus required> </label>
         <br><br>
-        <label> 화작 <input type="radio" class="radio" id="selec" name="entry.998653024" value="화작" autofocus required> </label>
+        <label> 화법과 작문 <input type="radio" class="radio" id="selec" name="entry.998653024" value="화작" autofocus required> </label>
     </fieldset> 
    </div>
    </div>
-     <hr>
+     <hr style="border-color: #05a500ab;">
    <div class="flex">  
-     <fieldset class="fieldset">
+     <fieldset class="fieldset" style="border-color: #05a500ab;">
      <legend>공통과목</legend>
         <table width="120%" class="table" style="margin-left: auto; margin-right: auto;">
          <tr class="table">
@@ -245,9 +261,6 @@
          </tr>
         </div>
      </table>
-    </fieldset>
-    <fieldset class="fieldset">
-        <legend>공통과목</legend>
     <div>
         <table width="100%" class="table" style="margin: auto;">     
          <tr class="table">     
@@ -332,7 +345,7 @@
         </table>
         </div>
      </fieldset>
-     <fieldset class="fieldset">
+     <fieldset class="fieldset" style="border-color: #05a500ab;">
         <legend>공통과목</legend>
     <div>
      <table width="100%" class="table" style="margin: auto;">     
@@ -418,9 +431,6 @@
          </tr>
          </table>
          </div>
-         </fieldset>
-         <fieldset class="fieldset">
-            <legend>공통과목</legend>
     <div>
       <table width="100%" class="table" style="margin: auto;">     
          <tr class="table">
@@ -458,7 +468,7 @@
          </table>
          </div>
          </fieldset>
-         <fieldset class="fieldset">
+         <fieldset class="fieldset" style="border-color: #05a500ab;">
             <legend>선택과목</legend>
     <div>
       <table width="100%" class="table" style="margin: auto;">              
@@ -554,6 +564,7 @@
         </div>    
      </fieldset>
     </div>
+    <hr style="border-color: #05a500ab;">
     <div>  
         <input type="submit" value="제출하기" style="margin: 0.5em;">
         <input type="reset" value="초기화" style="margin: 0.5em;">
