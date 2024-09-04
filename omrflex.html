@@ -139,12 +139,12 @@
             </style>
 </head>
 <body>
-  <div class="content-wrap" style="background-color: #fcfbe7;">
+  <div class="content-wrap" style="overflow:scroll; background-color: #fcfbe7;">
   <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeG2sgtXTZ0ZQ6zir99IeYpWvjc1k01aYanr7h-ZqbSMJU8fw/formResponse" class="flex" target="result" method="post" id="form1" onsubmit="return validateForm()">
    <div class="flex">
     <div> 
         <h1 style="text-align: center; font: 1em ;"> 국어영역 온라인 OMR </h1>
-        <fieldset style="margin: auto;">
+        <fieldset style="margin: auto; border-color: #05a500ab;">
             <legend> 수업년도 & 반</legend>  
           <input type="number" title="수업년도" name="entry.1839554895" id="grade" placeholder="수업년도" style="width: 8em;" autofocus required> 
           <input type="text" title="반" name="entry.1793974970" id="name" placeholder="반" style=" width: 8em;" autofocus required> 
@@ -152,7 +152,7 @@
           <br>
           <br>*반: 선생님의 안내에 따라 입력 <br>예) A, 1 등 </p>
         </fieldset>
-        <fieldset>
+        <fieldset style="border-color: #05a500ab;">
             <legend> 실시 년도 / 문제 & 월 / 회차</legend>  
           <input type="text" title="실시 년도 / 문제" name="entry.1383876584" id="grade" placeholder="실시 년도 / 문제" style="width: 8em;" autofocus required> 
           <input type="number" title="월 / 회차" name="entry.194725686" id="name" placeholder="월 / 회차" style=" width: 8em;" autofocus required> 
@@ -160,13 +160,13 @@
             <br>
             <br>*월 / 회차: 모의고사의 n월이나 문제의 n회차를 숫자로만 입력 <Br>예) 1, 2 등 </p>
         </fieldset>    
-     <fieldset>
+     <fieldset style="border-color: #05a500ab;">
          <legend> 생년월일 & 이름</legend>  
        <input type="number" title="생년월일" name="entry.1531838186" id="grade" placeholder="생년월일" style="width: 8em;" autofocus required> 
        <input type="text" title="이름" name="entry.1096808721" id="name" placeholder="이름" style=" width: 8em;" autofocus required> 
      </fieldset>
       <hr>
-     <fieldset style="color: rgb(80, 79, 79);">
+     <fieldset style="color: rgb(80, 79, 79); border-color: #05a500ab;">
         <legend>선택과목</legend>
         <label> 언어와 매체 <input type="radio" class="radio" id="selec" name="entry.998653024" value="언매" autofocus required> </label>
         <br><br>
@@ -174,9 +174,9 @@
     </fieldset> 
    </div>
    </div>
-     <hr>
+     <hr style="border-color: #05a500ab;">
    <div class="flex">  
-     <fieldset class="fieldset">
+     <fieldset class="fieldset" style="border-color: #05a500ab;">
      <legend>공통과목</legend>
         <table width="120%" class="table" style="margin-left: auto; margin-right: auto;">
          <tr class="table">
@@ -345,7 +345,7 @@
         </table>
         </div>
      </fieldset>
-     <fieldset class="fieldset">
+     <fieldset class="fieldset" style="border-color: #05a500ab;">
         <legend>공통과목</legend>
     <div>
      <table width="100%" class="table" style="margin: auto;">     
@@ -468,7 +468,7 @@
          </table>
          </div>
          </fieldset>
-         <fieldset class="fieldset">
+         <fieldset class="fieldset" style="border-color: #05a500ab;">
             <legend>선택과목</legend>
     <div>
       <table width="100%" class="table" style="margin: auto;">              
@@ -564,7 +564,7 @@
         </div>    
      </fieldset>
     </div>
-      <hr>
+    <hr style="border-color: #05a500ab;">
     <div>  
         <input type="submit" value="제출하기" style="margin: 0.5em;">
         <input type="reset" value="초기화" style="margin: 0.5em;">
