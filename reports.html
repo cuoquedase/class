@@ -1,119 +1,167 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
     <title>창의적 체험활동 소감문</title>
     <style>
-@font-face {
-    font-family: 'TheJamsil5Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-      body{
-  font-family:'TheJamsil5Bold';
-  background-image:url('https://source.unsplash.com/user/impatrickt');
-  background-size:100%;
-          font-size:1em;
-      }
-        .content-wrap{
-          background-color: white;
-          margin-left: auto;
-          margin-right: auto;
-          width: 85%;
-          border: 0.3rem;
-          padding: 0.3rem;
-          border-style: groove;
-          border-radius: 3%;
-          border-color: black;
-
+        @font-face {
+            font-family: 'TheJamsil5Bold';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
         }
-        .radio{
-            width: 1em;
-            height: 1em;
-            border: 0.1em;
+        body {
+            font-family: 'TheJamsil5Bold';
+            background-image: url('https://source.unsplash.com/user/impatrickt');
+            background-size: cover; /* 반응형 배경 이미지 */
+            background-position: center;
+            font-size: 1em;
+            padding: 20px;
+        }
+        .content-wrap {
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            width: 85%;
+            border: 0.3rem;
+            padding: 0.3rem;
+            border-style: groove;
+            border-radius: 3%;
+            border-color: black;
+        }
+        fieldset {
+            margin-bottom: 1.5em;
+            padding: 1em;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        textarea {
+            width: 98%;
+            padding: 0.5em;
+        }
+        input[type="submit"] {
+            margin: 0.5em;
+            padding: 0.5em 1.5em;
+            font-size: 1.2em;
+            cursor: pointer;
         }
 
-     @media screen and (min-width:320px){
-       .content-wrap {
-         width:90%
-       }
-     }
+        /* 반응형 라디오 버튼 레이아웃 (반 선택) */
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2열로 배치 */
+            gap: 0.5em; /* 항목 사이 간격 */
+            text-align: center; /* 중앙 정렬 */
+        }
 
-     @media screen and (min-width:768px){
-       .content-wrap {
-         width:70% 
-       }
-     }
+        /* 큰 화면에서는 라디오 버튼이 한 줄에 배치되도록 설정 */
+        @media screen and (min-width: 768px) {
+            .radio-group {
+                grid-template-columns: repeat(4, 1fr); /* 4열로 배치 */
+            }
+        }
 
-     @media screen and (min-width:1024px){
-       .content-wrap {
-         width:40%
+        /* 반응형 처리 */
+        @media screen and (min-width: 320px) {
+            .content-wrap {
+                width: 90%;
+            }
+        }
 
-         }
-     }
+        @media screen and (min-width: 768px) {
+            .content-wrap {
+                width: 70%;
+            }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .content-wrap {
+                width: 40%;
+            }
+        }
     </style>
 </head>
 <body onpaste="return false">
- <div class="content-wrap">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzkf-yPTXi08cBkP7IPOdawT4pjjgurkkrLa9YYStkVQieMQ/formResponse" target="result" method="post">
-   <h1 style="text-align: center; font-size: 2.5em;">창의적 체험활동 <br> 소감문</h1>
-    <br>
-      <fieldset style="font-size: 1.3em;">
-        <legend>인적사항</legend>
-          <input type="radio"  name="entry.1408123869" autofocus required value="1"> 1학년 <br>
-          <input type="radio"  name="entry.1408123869" autofocus required value="2"> 2학년 <br>
-          <input type="radio"  name="entry.1408123869" autofocus required value="3"> 3학년
-          <hr>
-          <input type="radio"  name="entry.1763979247" autofocus required value="1"> 1반 &nbsp;&nbsp;
-          <input type="radio"  name="entry.1763979247" autofocus required value="2"> 2반 &nbsp;&nbsp;
-          <input type="radio"  name="entry.1763979247" autofocus required value="3"> 3반 <br>
-          <input type="radio"  name="entry.1763979247" autofocus required value="4"> 4반 &nbsp;&nbsp;
-          <input type="radio"  name="entry.1763979247" autofocus required value="5"> 5반 &nbsp;&nbsp;
-          <input type="radio"  name="entry.1763979247" autofocus required value="6"> 6반 <br>
-          <input type="radio"  name="entry.1763979247" autofocus required value="7"> 7반 
-          <hr> 번호: <input type="number" name="entry.1900354692" min="1" max="50" title="번호" style="size: 3em; margin-left: 1em;" autofocus required> 번 <br>
-          이름: <input type="text" title="이름" name="entry.1581511566" size="10" placeholder="이름"  autofocus required> <br>
-      </fieldset>
-      <br>
-      <hr>
-      <br>
-        <fieldset style="font-size: 1.3em;">
-            <legend> 활동 내용</legend>
-            <input type="radio"  name="entry.875212296" autofocus required value="생활안전교육"> 생활안전교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="교통안전교육"> 교통안전교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="학교폭력예방교육"> 학교폭력예방교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="약물 및 사이버중독 예방교육"> 약물 및 사이버중독 예방교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="재난안전교육"> 재난안전교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="직업안전교육"> 직업안전교육<br>
-            <input type="radio"  name="entry.875212296" autofocus required value="응급처치교육"> 응급처치교육
-        </fieldset>      
-        <br>
-        <hr>
-        <br>
-   <div>  
-      <fieldset>
-         <legend style="font-size: 1.3em;"> 활동 요약 </legend>
-         <Textarea name="entry.461514449" style="width:98%" rows="10" placeholder="시청한 영상 내용이나 활동한 내용을 요약하세요." autofocus required></Textarea>
-     </fieldset>
-   </div>
-   <br>
-   <hr>
-   <br>
-   <div>    
-      <fieldset>
-         <legend style="font-size: 1.3em;">인상적인 활동과 이유</legend>
-         <Textarea name="entry.772478415" style="width: 98%;" rows="10" placeholder="인상적이었던 활동 내용을 선정하여 이유를 서술하세요" autofocus required></Textarea>
-      </fieldset>
-   </div>
-    <div>
-        <p style="color: red; font-size: 1.3em;">빈칸이 없는 경우에만 제출 완료됨. <br> 제출 완료시 별도의 창이 뜨지 않음.</p>
-        <input type="submit" value="제출하기" style="margin: 0.5em;">
-        <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
-   </div>
-</form>
-</div>
+    <div class="content-wrap">
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfzkf-yPTXi08cBkP7IPOdawT4pjjgurkkrLa9YYStkVQieMQ/formResponse" target="result" method="post" onsubmit="return validateForm()">
+            <h1>창의적 체험활동 <br> 소감문</h1>
+            <br>
+            <fieldset>
+                <legend>인적사항</legend>
+                <!-- 학년 선택 -->
+                <label>학년:</label>
+                <input type="radio" name="entry.1408123869" id="grade1" value="1"> 1학년
+                <input type="radio" name="entry.1408123869" id="grade2" value="2"> 2학년
+                <input type="radio" name="entry.1408123869" id="grade3" value="3"> 3학년
+                <br><br>
+
+                <!-- 반 선택 -->
+                <label>반:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="entry.1763979247" id="clas1" value="1"> 1반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas2" value="2"> 2반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas3" value="3"> 3반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas4" value="4"> 4반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas5" value="5"> 5반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas6" value="6"> 6반</label>
+                    <label><input type="radio" name="entry.1763979247" id="clas7" value="7"> 7반</label>
+                </div>
+                <br><br>
+
+                <!-- 번호 입력 -->
+                번호: <input type="number" name="entry.1900354692" min="1" max="50" id="number" required> 번
+                <br><br>
+                <!-- 이름 입력 -->
+                이름: <input type="text" name="entry.1581511566" id="name" size="10" placeholder="이름" required>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend>활동 내용</legend>
+                <input type="radio" name="entry.875212296" id="subject1" value="생활안전교육"> 생활안전교육<br>
+                <input type="radio" name="entry.875212296" id="subject2" value="교통안전교육"> 교통안전교육<br>
+                <input type="radio" name="entry.875212296" id="subject3" value="학교폭력예방교육"> 학교폭력예방교육<br>
+                <input type="radio" name="entry.875212296" id="subject4" value="약물 및 사이버중독 예방교육"> 약물 및 사이버중독 예방교육<br>
+                <input type="radio" name="entry.875212296" id="subject5" value="재난안전교육"> 재난안전교육<br>
+                <input type="radio" name="entry.875212296" id="subject6" value="직업안전교육"> 직업안전교육<br>
+                <input type="radio" name="entry.875212296" id="subject7" value="응급처치교육"> 응급처치교육
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend>활동 요약</legend>
+                <textarea name="entry.461514449" rows="10" placeholder="시청한 영상 내용이나 활동한 내용을 요약하세요." required></textarea>
+            </fieldset>
+            <hr>
+            <fieldset>
+                <legend>인상적인 활동과 이유</legend>
+                <textarea name="entry.772478415" rows="10" placeholder="인상적이었던 활동 내용을 선정하여 이유를 서술하세요" required></textarea>
+            </fieldset>
+            <input type="submit" value="제출하기">
+            <iframe name="result" style="height: 0; width: 0; border: 0;"></iframe>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var grade = document.querySelector('input[name="entry.1408123869"]:checked');
+            var clas = document.querySelector('input[name="entry.1763979247"]:checked');
+            var subject = document.querySelector('input[name="entry.875212296"]:checked');
+            var number = document.querySelector('input[name="entry.1900354692"]').value;
+            var name = document.querySelector('input[name="entry.1581511566"]').value;
+
+            // 유효성 검사
+            if (!grade || !clas || !subject || !number || !name) {
+                alert("모든 항목을 입력해 주세요.");
+                return false; // 폼 제출 중단
+            } else {
+                alert("제출 완료");
+                return true; // 폼 제출 허용
+            }
+        }
+    </script>
 </body>
 </html>
+
