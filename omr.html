@@ -625,28 +625,24 @@
   });
 });
 
-document.addEventListener('DOMContentLoaded', async function () {
-    const dropdown = document.getElementById('gradeDropdown');
+document.addEventListener('DOMContentLoaded', async function() {
+    const dropdown = document.getElementById("gradeDropdown");
 
     if (!dropdown) {
-      console.error('Dropdown element not found!');
+      console.error("Dropdown element not found!");
       return;
     }
 
-    // 캐시에서 데이터 불러오기 시도
-    const cachedOptions = localStorage.getItem('dropdownOptions');
-    const cacheTimestamp = localStorage.getItem('cacheTimestamp');
-    const cacheDuration = 1000 * 60 * 60 * 24; // 캐시 만료 시간: 24시간
-
-    // 캐시가 유효하면 사용
-    if (cachedOptions && cacheTimestamp && Date.now() - cacheTimestamp < cacheDuration) {
-      console.log('Using cached dropdown options');
-      populateDropdown(JSON.parse(cachedOptions));
-    } else {
-      // 유효한 캐시가 없으면 서버에서 가져오기
-      try {
+    try {
+      // 캐시 처리 - LocalStorage 활용
+      const cachedOptions = localStorage.getItem('dropdownOptions');
+      if (cachedOptions) {
+        const options = JSON.parse(cachedOptions);
+        populateDropdown(dropdown, options);
+        console.log('Loaded options from cache.');
+      } else {
         const response = await fetch(
-          'https://script.google.com/macros/s/AKfycbyhj1uwMOkJbvY4HZm7nUmuelY_KYpguSY5HWo5S2ooG_iWUQZ1fSBry-aH0EZjvAKscQ/exec'
+          "https://script.google.com/macros/s/AKfycbyhj1uwMOkJbvY4HZm7nUmuelY_KYpguSY5HWo5S2ooG_iWUQZ1fSBry-aH0EZjvAKscQ/exec"
         );
 
         if (!response.ok) {
@@ -654,37 +650,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
 
         const options = await response.json();
-        console.log('Fetched options:', options);
-
-        // 캐시에 저장
         localStorage.setItem('dropdownOptions', JSON.stringify(options));
-        localStorage.setItem('cacheTimestamp', Date.now().toString());
-
-        populateDropdown(options);
-      } catch (error) {
-        console.error('Error loading dropdown options:', error);
+        console.log('Fetched and cached options.');
+        populateDropdown(dropdown, options);
       }
+    } catch (error) {
+      console.error("Error loading dropdown options:", error);
     }
+});
 
-    function populateDropdown(options) {
-      dropdown.innerHTML = '<option value="" disabled selected>실시 년도 / 문제</option>';
-      options.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option;
-        opt.textContent = option;
-        dropdown.appendChild(opt);
-      });
-    }
-
-    // 드롭다운 길이 조정
-    dropdown.addEventListener('focus', function () {
-      this.classList.add('expand');
-    });
-
-    dropdown.addEventListener('blur', function () {
-      this.classList.remove('expand');
-    });
+// 드롭다운에 옵션을 추가하는 함수
+function populateDropdown(dropdown, options) {
+  dropdown.innerHTML = '<option value="" disabled selected>실시 년도 / 문제</option>';
+  options.forEach(option => {
+    const opt = document.createElement("option");
+    opt.value = option;
+    opt.textContent = option;
+    dropdown.appendChild(opt);
   });
+}
+
 
 
   </script>
