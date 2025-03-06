@@ -3,135 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=yes">
-    <title>공통국어 활동지 </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공통국어 활동지</title>
     <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
 
     <style>
       @font-face {
-    font-family: 'GowunDodum-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-      body{
-  font-family:'GowunDodum-Regular';
-  background-image:url('https://source.unsplash.com/user/impatrickt');
-  background-size:100%;
-          font-size:1em;
+        font-family: 'GowunDodum-Regular';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunDodum-Regular.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
       }
-        .content-wrap{
-          background-color: white;
-          margin-left: auto;
-          margin-right: auto;
-          width: 85%;
-          border: 0.3rem;
-          padding: 0.3rem;
-          border-style: groove;
-          border-radius: 3%;
-          border-color: black;
 
-        }
-        .radio{
-            width: 1em;
-            height: 1em;
-            border: 0.1em;
-        }
+      body {
+        font-family: 'GowunDodum-Regular', sans-serif;
+        background-image: url('https://source.unsplash.com/user/impatrickt');
+        background-size: cover;
+        background-position: center;
+        font-size: 1em;
+        margin: 0;
+      }
 
-     @media screen and (min-width:320px){
-      /*#container{
-        width: 95%;
-      }*/
       .content-wrap {
-         width:95%;
-         height: 30em;
-         overflow: auto;
-       }
-     }
+        background-color: white;
+        margin: 5% auto;
+        width: 85%;
+        padding: 0.3rem;
+        border: 0.3rem groove black;
+        border-radius: 3%;
+      }
 
-     @media screen and (min-width:768px) and (min-width: 1024px){
-      /*#container{
-         width: 100%;
-         margin-right: auto;
-       }*/
-       .content-wrap {
-         width:48%;
-         height: 40em;
-         float: left;
-         margin-top: 5%;
-         margin-bottom: 5%;
-         margin-left: auto;
-         margin-right: auto;
-       }
-     }
+      .radio {
+        width: 1em;
+        height: 1em;
+      }
 
-     @media screen and (min-width:1024px){
-      /* #container{
-         width: 100%;
-         margin-right: 5%;
-         margin-left: 5%;
-       }*/
-       .content-wrap {
-         width:48%;
-         height: 40em;
-         float: left;
-         margin-top: 5%;
-         margin-bottom: 5%;
-         margin-left: auto;
-         margin-right: auto;
-         
-       }  
-     }
+      @media screen and (min-width: 768px) {
+        .content-wrap {
+          width: 48%;
+          height: 40em;
+          overflow: auto;
+        }
+      }
     </style>
 </head>
 <body>
-    <iframe src="https://docs.google.com/document/d/e/2PACX-1vRk3DyV1y2yJelGhUtFg72r22EN6kNCeqw7rxYj-EaTKNnM5EPXugGFWBg9P_GQ2jKNgg1lUOzcNzJS/pub?embedded=true" class="content-wrap"></iframe>
+
+  <iframe src="https://docs.google.com/document/d/e/2PACX-1vRk3DyV1y2yJelGhUtFg72r22EN6kNCeqw7rxYj-EaTKNnM5EPXugGFWBg9P_GQ2jKNgg1lUOzcNzJS/pub?embedded=true" 
+          class="content-wrap"></iframe>
+
   <div class="content-wrap">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" target="result" method="post" onsubmit="return numberCheck()">
-   <h1 style="text-align: center;">공통국어 활동지</h1>
-    <hr>
-   <div> 
-     <fieldset>
-      <legend> 반 & 번호 & 이름</legend>
-       <input type="number" name="entry.575609189" min="1" max="10" title="반" style="size: 3em;" autofocus required> 반           
-       <input type="number" name="entry.1986804342" min="1" max="50" title="번호" style="size: 3em; margin-left: 1em;" autofocus required> 번
-         <hr>
-       <input type="text" title="이름" name="entry.1440774959" size="10" placeholder="이름"  autofocus required> 
-     </fieldset>
-   </div>
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" 
+          target="result" method="post" onsubmit="return numberCheck()">
+      
+      <h1 style="text-align: center;">공통국어 활동지</h1>
       <hr>
-   <div> 
-     <fieldset>
-     <legend>차시</legend>
-        <input type="number" name="entry.1913475540" min="1" max="30" title="차시" autofocus required> 차시
-     </fieldset>   
-   </div>
-     <br>
-   <div>  
+
       <fieldset>
-          <legend>활동 내용</legend>
-        질문 번호<input type="number" name="entry.1403681020" value="문항번호" min="1" style="margin-left: 1em; width: 3em;" autofocus required> 번
-        <br>
-          <span style="color: red;"><strong>*질문 번호를 반드시 바꾸세요*</strong></span>
-         <Textarea name="entry.1653996263" id="content1" style="width:98%; margin-top: 0.5em;" rows="3" placeholder="내용을 입력하세요." autofocus required ></Textarea>
+        <legend>반 & 번호 & 이름</legend>
+        <input type="number" name="entry.575609189" min="1" max="10" title="반" required> 반           
+        <input type="number" name="entry.1986804342" min="1" max="50" title="번호" required> 번
+        <hr>
+        <input type="text" name="entry.1440774959" size="10" placeholder="이름" required> 
       </fieldset>
-    </div>  
-    <div>  
-         <input type="submit" value="제출하기" style="margin: 0.5em;">
-         <!-- <input type="button" value="확인하기" onClick="window.open('https://docs.google.com/spreadsheets/d/e/2PACX-1vTwlg5mbX_iHgwaF2U7ZhNR-SSKf1xo4gfUcbwmX21RykXeSZUGg6DU8q3-6bDcNcjBuZrgsKMKP32I/pubhtml')"> -->
-          <script>
-            function numberCheck(){
-              if(confirm("질문 번호를 확인했습니까?")==true){
-                alert("제출하였습니다.")
-              }else{
-                alert("취소하였습니다.");
-                 return false;
-              }
-            }  
-          </script>
-          <iframe name="result" style="height: 0; width: 0; border: 0em">결과</iframe>
-   </div>
-</form>
-</div>
+
+      <fieldset>
+        <legend>차시</legend>
+        <input type="number" name="entry.1913475540" min="1" max="30" title="차시" required> 차시
+      </fieldset>   
+
+      <fieldset>
+        <legend>활동 내용</legend>
+        질문 번호 <input type="number" name="entry.1403681020" min="1" style="width: 3em;" required> 번
+        <br>
+        <span style="color: red;"><strong>*질문 번호를 반드시 바꾸세요*</strong></span>
+        <textarea name="entry.1653996263" style="width:98%; margin-top: 0.5em;" rows="3" placeholder="내용을 입력하세요." required></textarea>
+      </fieldset>
+
+      <input type="submit" value="제출하기" style="margin: 0.5em;">
+      
+      <iframe name="result" style="height: 0; width: 0; border: 0;"></iframe>
+    </form>
+  </div>
+
+  <script>
+    function numberCheck() {
+      var form = document.querySelector('form');
+      var inputs = form.querySelectorAll('input[required], textarea[required]');
+      var valid = true;
+      
+      // 각 입력 필드에 대해 유효성 검사
+      inputs.forEach(function(input) {
+        if (!input.checkValidity()) {
+          valid = false; // 유효하지 않으면 제출을 막음
+        }
+      });
+
+      // 유효하지 않으면 알림 창을 띄우지 않고 처리
+      if (!valid) {
+        alert("모든 필드를 정확히 입력해주세요.");
+        return false; // 제출 막기
+      }
+
+      // 질문 번호 확인
+      if (confirm("질문 번호를 확인했습니까?")) {
+        alert("제출하였습니다.");
+        return true; // 제출 진행
+      } else {
+        alert("취소하였습니다.");
+        return false; // 제출 막기
+      }
+    }
+  </script>
+
 </body>
 </html>
+
