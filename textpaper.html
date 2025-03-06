@@ -87,7 +87,7 @@
 <body>
     <iframe src="https://docs.google.com/document/d/e/2PACX-1vRk3DyV1y2yJelGhUtFg72r22EN6kNCeqw7rxYj-EaTKNnM5EPXugGFWBg9P_GQ2jKNgg1lUOzcNzJS/pub?embedded=true" class="content-wrap"></iframe>
   <div class="content-wrap">
-  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" target="result" method="post">
+  <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" target="result" method="post" onsubmit="return numberCheck()">
    <h1 style="text-align: center;">공통국어 활동지</h1>
     <hr>
    <div>
@@ -133,7 +133,8 @@
               if(confirm("질문 번호를 확인했습니까?")==true){
                 alert("제출하였습니다.")
               }else{
-                return alert("취소하였습니다.");
+                alert("취소하였습니다.");
+                 return false;
               }
             }  
           </script>
