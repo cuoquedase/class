@@ -97,11 +97,14 @@
       <hr>
 
       <fieldset>
-        <legend>반 & 번호 & 이름</legend>
+        <legend>반 & 번호 & 비밀번호 &이름</legend>
         <input type="number" name="entry.575609189" min="1" max="10" title="반" required> 반           
         <input type="number" name="entry.1986804342" min="1" max="50" title="번호" required> 번
         <hr>
-        <input type="text" name="entry.1440774959" size="10" placeholder="이름" required> 
+        비밀번호 : <input type="password" name="entry.1373887942" placeholder="비밀번호" id="password">
+        <button type="button" id="showPassword">보이기</button> 
+        <hr>
+        이름 : <input type="text" name="entry.1440774959" size="10" placeholder="이름" required> 
       </fieldset>
 
       <fieldset>
@@ -151,8 +154,15 @@
         return false; // 제출 막기
       }
     }
+
+    document.getElementById('showPassword').addEventListener('click', function() {
+    var passwordField = document.getElementById('password');
+    var isPassword = passwordField.type === 'password';
+
+    passwordField.type = isPassword ? 'text' : 'password';
+    this.textContent = isPassword ? '숨기기' : '보이기';
+  });
   </script>
 
 </body>
 </html>
-
