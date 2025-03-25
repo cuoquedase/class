@@ -104,7 +104,7 @@
         비밀번호 : <input type="password" name="entry.1373887942" placeholder="비밀번호" id="password">
         <button type="button" id="showPassword">보이기</button> 
         <hr>
-        이름 : <input type="text" name="entry.1440774959" size="10" placeholder="이름" required> 
+        이름 : <input type="text" name="entry.1440774959" size="10" placeholder="이름" id="nameInput" required> 
       </fieldset>
 
       <fieldset>
@@ -127,51 +127,74 @@
   </div>
 
   <script>
-function numberCheck() {
-  var form = document.querySelector('form');
-  var inputs = form.querySelectorAll('input[required], textarea[required]');
-  var valid = true;
-  
-  // 각 입력 필드 유효성 검사
-  inputs.forEach(function(input) {
-    if (!input.checkValidity()) {
-      valid = false;
+    function numberCheck() {
+      var form = document.querySelector('form');
+      var inputs = form.querySelectorAll('input[required], textarea[required]');
+      var valid = true;
+      
+      // 각 입력 필드 유효성 검사
+      inputs.forEach(function(input) {
+        if (!input.checkValidity()) {
+          valid = false;
+        }
+      });
+    
+      if (!valid) {
+        alert("모든 필드를 정확히 입력해주세요.");
+        return false; 
+      }
+    
+      // 질문 번호 확인
+      if (confirm("질문 번호를 확인했습니까?")) {
+        alert("제출하였습니다.");
+    
+        // 일정 시간 후 필드 초기화 (Google Forms에 데이터 전송 후)
+        setTimeout(function() {
+          document.querySelector('textarea[name="entry.1653996263"]').value = ''; // 활동 내용 초기화
+          document.querySelector('input[name="entry.1403681020"]').value = ''; // 질문 번호 초기화
+        }, 1000); // 1초(1000ms) 후에 실행
+    
+        return true; // 폼 제출 진행
+      } else {
+        alert("취소하였습니다.");
+        return false; 
+      }
     }
-  });
-
-  if (!valid) {
-    alert("모든 필드를 정확히 입력해주세요.");
-    return false; 
-  }
-
-  // 질문 번호 확인
-  if (confirm("질문 번호를 확인했습니까?")) {
-    alert("제출하였습니다.");
-
-    // 일정 시간 후 필드 초기화 (Google Forms에 데이터 전송 후)
-    setTimeout(function() {
-      document.querySelector('textarea[name="entry.1653996263"]').value = ''; // 활동 내용 초기화
-      document.querySelector('input[name="entry.1403681020"]').value = ''; // 질문 번호 초기화
-    }, 1000); // 1초(1000ms) 후에 실행
-
-    return true; // 폼 제출 진행
-  } else {
-    alert("취소하였습니다.");
-    return false; 
-  }
-}
-
-
-
+    
+    // ✅ 비밀번호 보이기/숨기기 기능
     document.getElementById('showPassword').addEventListener('click', function() {
-    var passwordField = document.getElementById('password');
-    var isPassword = passwordField.type === 'password';
-
-    passwordField.type = isPassword ? 'text' : 'password';
-    this.textContent = isPassword ? '숨기기' : '보이기';
-  });
-  </script>
+      var passwordField = document.getElementById('password');
+      var isPassword = passwordField.type === 'password';
+    
+      passwordField.type = isPassword ? 'text' : 'password';
+      this.textContent = isPassword ? '숨기기' : '보이기';
+    });
+    
+    // ✅ 비밀번호 입력 제한 (대문자는 소문자로 변환, 띄어쓰기는 삭제, 특수문자는 경고창 띄우기)
+    document.getElementById("password").addEventListener("input", function () {
+      let inputValue = this.value;
+      
+      // 1️⃣ 대문자는 자동으로 소문자로 변환
+      inputValue = inputValue.toLowerCase();
+    
+      // 2️⃣ 띄어쓰기는 자동으로 삭제
+      inputValue = inputValue.replace(/\s/g, "");
+    
+      // 3️⃣ 특수문자가 입력되었는지 확인
+      if (/[^a-z0-9]/.test(inputValue)) {
+        alert("소문자 알파벳과 숫자만 사용할 수 있습니다!");
+        inputValue = inputValue.replace(/[^a-z0-9]/g, ""); // 특수문자 제거
+      }
+    
+      // 변환된 값 적용
+      this.value = inputValue;
+    });
+    
+    // ✅ 이름 입력 제한 (띄어쓰기는 자동 삭제, 소문자와 숫자만 허용)
+    document.getElementById("nameInput").addEventListener("input", function () {
+  this.value = this.value.replace(/\s/g, ""); // 띄어쓰기 삭제
+});
+    </script>
 
 </body>
 </html>
-
