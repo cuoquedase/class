@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2학년 활동지</title>
+    <link rel="icon" type="image/x-icon" href="https://cuoquedase.github.io/class/favicon.ico"> 
+
+    <style>
+@font-face {
+    font-family: '양진체';
+    src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+      body{
+  font-family:'양진체';
+  background-image:url('https://source.unsplash.com/user/impatrickt');
+  background-size:100%;
+          font-size:1em;
+      }
+        .content-wrap{
+          background-color: white;
+          margin-left: auto;
+          margin-right: auto;
+          width: 85%;
+          border: 0.3rem;
+          padding: 0.3rem;
+          border-style: groove;
+          border-radius: 3%;
+          border-color: black;
+
+        }
+        .radio{
+            width: 1em;
+            height: 1em;
+            border: 0.1em;
+        }
+
+     @media screen and (min-width:320px){
+      /*#container{
+        width: 95%;
+      }*/
+      .content-wrap {
+         width:95%;
+         height: 30em;
+         overflow: auto;
+       }
+     }
+
+     @media screen and (min-width:768px) and (min-width: 1024px){
+      /*#container{
+         width: 100%;
+         margin-right: auto;
+       }*/
+       .content-wrap {
+         width:48%;
+         height: 40em;
+         float: left;
+         margin-top: 5%;
+         margin-bottom: 5%;
+         margin-left: auto;
+         margin-right: auto;
+       }
+     }
+
+     @media screen and (min-width:1024px){
+      /* #container{
+         width: 100%;
+         margin-right: 5%;
+         margin-left: 5%;
+       }*/
+       .content-wrap {
+         width:48%;
+         height: 40em;
+         float: left;
+         margin-top: 5%;
+         margin-bottom: 5%;
+         margin-left: auto;
+         margin-right: auto;
+         
+       }  
+     }
+    </style>
+</head>
+<body>
+
+  <iframe src="https://docs.google.com/document/d/e/2PACX-1vS0fvhPPwZcCbgQAXvjjTEv7R6ds_h5-HLgN9y0tS7w5RGDtWe8ZzWaBtSTCMBJBKU2-42iVqq9nlo7/pub?embedded=true" 
+          class="content-wrap"></iframe>
+
+  <div class="content-wrap">
+    <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfWWcpr7MJyAn6mWaoL2LUGqR-hLFgqxjONQzWAxkxHCuDmiw/formResponse" 
+          target="result" method="post" onsubmit="return numberCheck()">
+      
+      <h1 style="text-align: center;">2학년 활동지</h1>
+      <hr>
+
+      <fieldset>
+        <legend>반 & 번호 & 비밀번호 &이름</legend>
+        <input type="number" name="entry.575609189" min="1" max="10" title="반" required> 반           
+        <input type="number" name="entry.1986804342" min="1" max="50" title="번호" required> 번
+        <hr>
+        비밀번호 : <input type="password" name="entry.1373887942" placeholder="비밀번호" id="password" required>
+        <button type="button" id="showPassword">보이기</button> 
+        <hr>
+        이름 : <input type="text" name="entry.1440774959" size="10" placeholder="이름" id="nameInput" required> 
+      </fieldset>
+
+      <fieldset>
+        <legend>차시</legend>
+        <input type="number" name="entry.1913475540" min="1" max="30" title="차시" required> 차시
+      </fieldset>   
+
+      <fieldset>
+        <legend>활동 내용</legend>
+        질문 번호 <input type="number" name="entry.1403681020" min="1" style="width: 3em;" required> 번
+        <br>
+        <span style="color: red;"><strong>*질문 번호를 반드시 바꾸세요*</strong></span>
+        <textarea name="entry.1653996263" style="width:98%; margin-top: 0.5em;" rows="3" placeholder="내용을 입력하세요." required></textarea>
+      </fieldset>
+
+      <input type="submit" value="제출하기" style="margin: 0.5em;">
+      
+      <iframe name="result" style="height: 0; width: 0; border: 0;"></iframe>
+    </form>
+  </div>
+
+  <script>
+    function numberCheck() {
+      var form = document.querySelector('form');
+      var inputs = form.querySelectorAll('input[required], textarea[required]');
+      var valid = true;
+      
+      // 각 입력 필드 유효성 검사
+      inputs.forEach(function(input) {
+        if (!input.checkValidity()) {
+          valid = false;
+        }
+      });
+    
+      if (!valid) {
+        alert("모든 필드를 정확히 입력해주세요.");
+        return false; 
+      }
+    
+      // 질문 번호 확인
+      if (confirm("질문 번호를 확인했습니까?")) {
+        alert("제출하였습니다.");
+    
+        // 일정 시간 후 필드 초기화 (Google Forms에 데이터 전송 후)
+        setTimeout(function() {
+          document.querySelector('textarea[name="entry.1653996263"]').value = ''; // 활동 내용 초기화
+          document.querySelector('input[name="entry.1403681020"]').value = ''; // 질문 번호 초기화
+        }, 1000); // 1초(1000ms) 후에 실행
+    
+        return true; // 폼 제출 진행
+      } else {
+        alert("취소하였습니다.");
+        return false; 
+      }
+    }
+    
+    // ✅ 비밀번호 보이기/숨기기 기능
+    document.getElementById('showPassword').addEventListener('click', function() {
+      var passwordField = document.getElementById('password');
+      var isPassword = passwordField.type === 'password';
+    
+      passwordField.type = isPassword ? 'text' : 'password';
+      this.textContent = isPassword ? '숨기기' : '보이기';
+    });
+    
+    // ✅ 비밀번호 입력 제한 (대문자는 소문자로 변환, 띄어쓰기는 삭제, 특수문자는 경고창 띄우기)
+    document.getElementById("password").addEventListener("input", function () {
+      let inputValue = this.value;
+      
+      // 1️⃣ 대문자는 자동으로 소문자로 변환
+      inputValue = inputValue.toLowerCase();
+    
+      // 2️⃣ 띄어쓰기는 자동으로 삭제
+      inputValue = inputValue.replace(/\s/g, "");
+    
+      // 3️⃣ 특수문자가 입력되었는지 확인
+      if (/[^a-z0-9]/.test(inputValue)) {
+        alert("소문자 알파벳과 숫자만 사용할 수 있습니다!");
+        inputValue = inputValue.replace(/[^a-z0-9]/g, ""); // 특수문자 제거
+      }
+    
+      // 변환된 값 적용
+      this.value = inputValue;
+    });
+    
+    // ✅ 이름 입력 제한 (띄어쓰기는 자동 삭제, 소문자와 숫자만 허용)
+    document.getElementById("nameInput").addEventListener("input", function () {
+  this.value = this.value.replace(/\s/g, ""); // 띄어쓰기 삭제
+});
+    </script>
+
+</body>
+</html>
