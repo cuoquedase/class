@@ -5,30 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2학년 활동 기록 조회</title>
     <style>
-        @font-face {
-            font-family: 'GongGothicMedium';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
-        }
+        @font-face { font-family: 'GongGothicMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff'); }
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'GongGothicMedium', sans-serif; overflow: hidden; }
         .main-container { display: flex; height: 100vh; width: 100vw; }
-        .worksheet-area { flex: 1.2; border-right: 3px solid #000; background-color: #f0f0f0; }
+        
+        /* ✅ 비율 1.2 */
+        .worksheet-area { flex: 1.2; border-right: 3px solid #000; background-color: #f0f0f0; display: flex; justify-content: center; }
         .worksheet-area iframe { width: 100%; height: 100%; border: none; }
+
+        /* ✅ 비율 0.8 */
         .search-area { flex: 0.8; padding: 25px; overflow-y: auto; background-color: #ffffff; display: flex; flex-direction: column; }
         
         .nav-btn { align-self: flex-end; padding: 8px 15px; background-color: #f0fff0; border: 2px solid #000; border-radius: 8px; font-size: 0.9rem; cursor: pointer; box-shadow: 3px 3px 0px #000; margin-bottom: 10px; }
-        .nav-btn:hover { background-color: #e8f5e8; transform: translate(1px, 1px); box-shadow: 2px 2px 0px #000; }
-
         h2 { text-align: center; font-size: 1.6rem; margin: 0 0 20px 0; }
         .search-box { background: #ffffff; padding: 20px; border: 2px solid #000; border-radius: 12px; box-shadow: 6px 6px 0px #000; margin-bottom: 25px; }
         input { width: calc(100% - 24px); padding: 12px; margin: 8px 0; border: 1px solid #bbb; border-radius: 6px; font-family: inherit; font-size: 1rem; }
         .pw-container { position: relative; width: 100%; }
         .toggle-pw { position: absolute; right: 15px; top: 20px; cursor: pointer; font-size: 1.2rem; }
         button.search-btn { width: 100%; padding: 14px; background-color: #000; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 1.1rem; margin-top: 15px; }
-        button.search-btn:hover { background-color: #333; transform: translateY(-2px); }
         .result-item { background: #fffdf0; border: 1px dashed #999; padding: 15px; margin-bottom: 12px; border-radius: 8px; line-height: 1.6; animation: fadeIn 0.5s; }
-        .q-no { font-weight: bold; color: #d35400; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 850px) { .main-container { flex-direction: column; overflow-y: auto; } .worksheet-area { flex: none; height: 40vh; border-bottom: 3px solid #000; } }
+        @media (max-width: 850px) { .main-container { flex-direction: column; } .worksheet-area { flex: none; height: 40vh; } }
     </style>
 </head>
 <body>
@@ -40,14 +37,14 @@
         <button class="nav-btn" onclick="location.href='textpaper.html'">✍️ 활동지 제출하러 가기</button>
         <h2>📖 2학년 활동 기록 조회</h2>
         <div class="search-box">
-            <input type="text" id="class" placeholder="반 (예: 1)">
-            <input type="text" id="num" placeholder="번호 (예: 5)">
+            <input type="text" id="class" placeholder="반">
+            <input type="text" id="num" placeholder="번호">
             <input type="text" id="name" placeholder="이름">
             <div class="pw-container">
                 <input type="password" id="pw" placeholder="비밀번호" oninput="this.value = this.value.replace(/[^a-z0-9]/g, '')">
                 <span class="toggle-pw" onclick="togglePassword()">👁️</span>
             </div>
-            <input type="text" id="period" placeholder="조회할 차시 (예: 1)">
+            <input type="text" id="period" placeholder="조회할 차시">
             <button class="search-btn" onclick="searchData()">나의 기록 불러오기</button>
         </div>
         <div id="results"><p style="text-align:center; color:#888;">정보를 입력하고 버튼을 눌러주세요.</p></div>
@@ -74,17 +71,16 @@
         fetch(`${scriptURL}?${params.toString()}`)
             .then(res => res.json())
             .then(data => {
-                if (!data || data.length === 0 || data.message) {
+                if (!data || data.length === 0) {
                     resultsDiv.innerHTML = "<p style='color:red; text-align:center;'>기록이 없습니다.</p>";
                     return;
                 }
                 let html = "<h3>조회 결과</h3>";
                 data.forEach(item => {
-                    html += `<div class="result-item"><div class="q-no">📌 ${item.questionNo}번 질문 답변</div><div>${item.content}</div></div>`;
+                    html += `<div class="result-item">📌 ${item.questionNo}번 질문 답변<br>${item.content}</div>`;
                 });
                 resultsDiv.innerHTML = html;
-            })
-            .catch(err => { resultsDiv.innerHTML = "<p style='color:red; text-align:center;'>오류가 발생했습니다.</p>"; });
+            });
     }
 </script>
 </body>
