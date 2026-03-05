@@ -5,33 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2학년 활동지 - 제출</title>
     <style>
-        @font-face { font-family: '양진체'; src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff'); }
-        :root { --input-height: 32px; --border-color: #000; }
+        @font-face {
+            font-family: '양진체';
+            src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+        }
+
+        :root {
+            --input-height: 32px;
+            --border-color: #000;
+        }
+
         * { box-sizing: border-box; }
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: '양진체', sans-serif; overflow: hidden; }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: '양진체', sans-serif; /* ✅ 양진체 적용 */
+            overflow: hidden;
+        }
+
         .main-container { display: flex; height: 100vh; width: 100%; }
 
-        /* ✅ 비율 1.2로 통일 */
-        .worksheet-area { flex: 1.2; border-right: 3px solid var(--border-color); background-color: #f0f0f0; min-width: 0; display: flex; justify-content: center; }
+        /* 비율 1.2 */
+        .worksheet-area {
+            flex: 1.2;
+            border-right: 3px solid var(--border-color);
+            background-color: #f0f0f0;
+            min-width: 0;
+            display: flex;
+            justify-content: center;
+        }
         .worksheet-area iframe { width: 100%; height: 100%; border: none; display: block; }
 
-        /* ✅ 비율 0.8로 통일 */
-        .input-area { flex: 0.8; padding: 25px; overflow-y: auto; background-color: #ffffff; min-width: 0; display: flex; flex-direction: column; }
-        
-        .nav-btn { align-self: flex-end; padding: 8px 15px; background-color: #fffdec; border: 2px solid #000; border-radius: 8px; font-family: '양진체'; font-size: 0.9rem; cursor: pointer; box-shadow: 3px 3px 0px #000; margin-bottom: 10px; }
+        /* 비율 0.8 */
+        .input-area {
+            flex: 0.8;
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-btn {
+            align-self: flex-end;
+            padding: 8px 15px;
+            background-color: #fffdec;
+            border: 2px solid #000;
+            border-radius: 8px;
+            font-family: '양진체';
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000;
+            margin-bottom: 10px;
+        }
         .nav-btn:hover { background-color: #f0f0f0; transform: translate(1px, 1px); box-shadow: 2px 2px 0px #000; }
+
         h1 { text-align: center; font-size: 1.6rem; margin: 0 0 20px 0; }
-        .input-box { background: #ffffff; padding: 20px; border: 2px solid var(--border-color); border-radius: 12px; box-shadow: 6px 6px 0px var(--border-color); margin-bottom: 25px; }
-        .box-title { display: block; font-weight: bold; font-size: 1rem; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+        
+        .input-box {
+            background: #ffffff;
+            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 6px 6px 0px var(--border-color);
+            margin-bottom: 25px;
+        }
+
+        .box-title {
+            display: block;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
         .flex-row { display: flex; flex-wrap: wrap; gap: 12px 15px; align-items: center; }
+        .input-item { display: flex; align-items: center; gap: 5px; }
+
+        input {
+            height: var(--input-height);
+            padding: 0 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: '양진체', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
         input[type="number"].narrow { width: 60px; } 
         input[type="text"].medium, input[type="password"].medium { width: 130px; } 
-        input { height: var(--input-height); padding: 0 8px; border: 1px solid #ccc; border-radius: 6px; font-family: '양진체'; font-size: 0.9rem; outline: none; }
+        input:focus { border-color: var(--border-color); background-color: #fffdec; }
+
         .pw-wrapper { position: relative; display: flex; align-items: center; }
-        .btn-toggle { position: absolute; right: 3px; height: 26px; padding: 0 6px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-family: '양진체'; font-size: 0.7rem; }
-        textarea { width: 100%; height: 240px; padding: 12px; margin-top: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: '양진체'; font-size: 1rem; line-height: 1.6; resize: none; display: block; }
-        .submit-btn { width: 100%; height: 50px; background-color: var(--border-color); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-family: '양진체'; font-size: 1.2rem; font-weight: bold; margin-top: 15px; }
-        @media (max-width: 850px) { .main-container { flex-direction: column; overflow-y: auto; } .worksheet-area { flex: none; height: 35vh; border-bottom: 3px solid #000; } }
+        .btn-toggle {
+            position: absolute; right: 3px;
+            height: 26px; padding: 0 6px;
+            background: #eee; border: 1px solid #ccc;
+            border-radius: 4px; cursor: pointer; font-family: '양진체'; font-size: 0.7rem;
+        }
+
+        textarea {
+            width: 100%;
+            height: 240px; 
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-family: '양진체', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            resize: none;
+            display: block;
+        }
+
+        .submit-btn {
+            width: 100%; height: 50px;
+            background-color: var(--border-color);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: '양진체';
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .submit-btn:hover { background-color: #333; transform: translateY(-2px); }
+
+        @media (max-width: 850px) {
+            .main-container { flex-direction: column; overflow-y: auto; }
+            .worksheet-area { flex: none; height: 35vh; border-bottom: 3px solid #000; }
+        }
     </style>
 </head>
 <body>
@@ -76,7 +182,7 @@
         inputs.forEach(function(input) { if (!input.checkValidity()) valid = false; });
         if (!valid) { alert("모든 필드를 정확히 입력해주세요."); return false; }
         if (confirm("제출하시겠습니까?")) {
-            alert("제출되었습니다.");
+            alert("완료를 눌러야 제출이 됩니다.");
             setTimeout(function() {
                 document.querySelector('textarea[name="entry.1653996263"]').value = '';
                 document.querySelector('input[name="entry.1403681020"]').value = '';
