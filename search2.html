@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국어 수업 기록 조회 시스템</title>
+    <style>
+        @font-face {
+            font-family: 'GongGothicMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff');
+        }
 
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'GongGothicMedium', sans-serif;
+            overflow: hidden;
+        }
+
+        /* 메인 레이아웃 */
+        .main-container {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* 왼쪽: 학습지 영역 (구글 문서) */
+        .worksheet-area {
+            flex: 1.2;
+            border-right: 3px solid #000;
+            background-color: #f0f0f0;
+        }
+
+        .worksheet-area iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 오른쪽: 조회 영역 */
+        .search-area {
+            flex: 0.8;
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 { text-align: center; font-size: 1.6rem; margin-top: 0; margin-bottom: 20px; color: #222; }
+
+        /* 검색 박스 */
+        .search-box {
+            background: #ffffff;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 12px;
+            box-shadow: 6px 6px 0px #000;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        /* 비밀번호 토글 */
+        .pw-container { position: relative; width: 100%; }
+        .toggle-pw {
+            position: absolute; right: 15px; top: 20px;
+            cursor: pointer; user-select: none; font-size: 1.2rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+
+        button:hover { background-color: #333; transform: translateY(-2px); }
+
+        /* 결과 표시 스타일 */
+        #results { margin-top: 10px; }
+        .result-item {
+            background: #fffdf0;
+            border: 1px dashed #999;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+        .q-no { font-weight: bold; color: #d35400; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+
+        /* 모바일 대응 */
+        @media (max-width: 850px) {
+            .main-container { flex-direction: column; overflow-y: auto; }
+            .worksheet-area { flex: none; height: 45vh; border-right: none; border-bottom: 3px solid #000; }
+            .search-area { flex: none; height: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div class="worksheet-area">
+        <iframe src="https://docs.google.com/document/d/e/2PACX-1vS0fvhPPwZcCbgQAXvjjTEv7R6ds_h5-HLgN9y0tS7w5RGDtWe8ZzWaBtSTCMBJBKU2-42iVqq9nlo7/pub"></iframe>
+    </div>
+
+    <div class="search-area">
+        <h2>📖 활동 기록 확인</h2>
+        
+        <div class="search-box">
+            <input type="text" id="class" placeholder="반 (예: 1)">
+            <input type="text" id="num" placeholder="번호 (예: 5)">
+            <input type="text" id="name" placeholder="이름">
+            <div class="pw-container">
+                <input type="password" id="pw" placeholder="비밀번호 (영문소문자/숫자)" 
+                       oninput="this.value = this.value.replace(/[^a-z0-9]/g, '')">
+                <span class="toggle-pw" onclick="togglePassword()">👁️</span>
+            </div>
+            <input type="text" id="period" placeholder="조회할 차시 (예: 1)">
+            <button onclick="searchData()">나의 기록 불러오기</button>
+        </div>
+
+        <div id="results">
+            <p style="text-align:center; color:#888;">정보를 입력하고 버튼을 눌러주세요.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    // 비밀번호 보이기/숨기기 토글
+    function togglePassword() {
+        const pwInput = document.getElementById('pw');
+        const icon = document.querySelector('.toggle-pw');
+        if (pwInput.type === 'password') {
+            pwInput.type = 'text';
+            icon.textContent = '🙈';
+        } else {
+            pwInput.type = 'password';
+            icon.textContent = '👁️';
+        }
+    }
+
+    // 데이터 조회 로직
+    function searchData() {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = "<p style='text-align:center;'>기록을 찾는 중입니다... 🔍</p>";
+
+        const params = new URLSearchParams({
+            class: document.getElementById('class').value,
+            num: document.getElementById('num').value,
+            name: document.getElementById('name').value,
+            pw: document.getElementById('pw').value,
+            period: document.getElementById('period').value
+        });
+
+        // 선생님께서 주신 웹 앱 URL
+        const scriptURL = "https://script.google.com/macros/s/AKfycby6UxXYETf0rDuHPyqwY6YDCCEGZpH4lSNnD5tsj1ThC7TEIVcH97aSYjDqbp3gC9uf/exec";
+
+        fetch(`${scriptURL}?${params.toString()}`)
+            .then(res => res.json())
+            .then(data => {
+                if (!data || data.length === 0 || data.message) {
+                    resultsDiv.innerHTML = "<p style='color:red; text-align:center;'>일치하는 기록이 없습니다.<br>입력 정보를 다시 확인해 주세요.</p>";
+                    return;
+                }
+                
+                let html = "<h3>조회 결과</h3>";
+                data.forEach(item => {
+                    html += `<div class="result-item">
+                                <div class="q-no">📌 ${item.questionNo}번 질문 답변</div>
+                                <div>${item.content}</div>
+                             </div>`;
+                });
+                resultsDiv.innerHTML = html;
+            })
+            .catch(err => {
+                resultsDiv.innerHTML = "<p style='text-align:center; color:red;'>오류가 발생했습니다.<br>잠시 후 다시 시도해 주세요.</p>";
+                console.error(err);
+            });
+    }
+</script>
+
+</body>
+</html>
