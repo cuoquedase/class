@@ -3,231 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1학년 활동지 - 입력(배치 수정)</title>
+    <title>1학년 활동지 - 제출</title>
     <style>
         @font-face {
             font-family: '양진체';
             src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
         }
-
-        :root {
-            --input-height: 30px;
-            --border-color: #000;
-        }
-
+        :root { --input-height: 32px; --border-color: #000; }
         * { box-sizing: border-box; }
-
-        body, html {
-            margin: 0; padding: 0; height: 100%; width: 100%;
-            font-family: '양진체', sans-serif;
-            overflow: hidden;
-        }
-
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: '양진체', sans-serif; overflow: hidden; }
         .main-container { display: flex; height: 100vh; width: 100%; }
 
-        /* 왼쪽 학습지 영역 */
+        /* 왼쪽 학습지 영역 (1.2 비율) */
         .worksheet-area {
             flex: 1.2;
-            border-right: 2px solid var(--border-color);
+            border-right: 3px solid var(--border-color);
             background-color: #f0f0f0;
             min-width: 0;
+            display: flex;
+            justify-content: center;
         }
         .worksheet-area iframe { width: 100%; height: 100%; border: none; display: block; }
 
-        /* 오른쪽 입력 영역 */
+        /* 오른쪽 입력 영역 (0.8 비율) */
         .input-area {
             flex: 0.8;
-            padding: 20px;
+            padding: 25px;
             overflow-y: auto;
-            overflow-x: hidden;
             background-color: #ffffff;
             min-width: 0;
+            display: flex;
+            flex-direction: column;
         }
-
-        h1 { text-align: center; font-size: 1.4rem; margin: 0 0 15px 0; }
         
-        fieldset {
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 15px;
-            padding: 15px;
-            width: 100%;
-        }
+        /* 네비게이션 버튼 스타일 */
+        .nav-btn { align-self: flex-end; padding: 8px 15px; background-color: #fffdec; border: 2px solid #000; border-radius: 8px; font-family: '양진체'; font-size: 0.9rem; cursor: pointer; box-shadow: 3px 3px 0px #000; margin-bottom: 10px; }
+        .nav-btn:hover { background-color: #f0f0f0; transform: translate(1px, 1px); box-shadow: 2px 2px 0px #000; }
 
-        legend { font-weight: bold; padding: 0 5px; font-size: 0.9rem; }
-
-        .flex-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px 15px;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .input-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
+        h1 { text-align: center; font-size: 1.6rem; margin: 0 0 20px 0; }
+        .input-box { background: #ffffff; padding: 20px; border: 2px solid var(--border-color); border-radius: 12px; box-shadow: 6px 6px 0px var(--border-color); margin-bottom: 25px; }
+        .box-title { display: block; font-weight: bold; font-size: 1rem; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+        .flex-row { display: flex; flex-wrap: wrap; gap: 12px 15px; align-items: center; }
+        
         /* 너비 최적화 */
-        input[type="number"].narrow { width: 55px; } 
-        input[type="text"].medium, input[type="password"].medium { width: 120px; } 
-
-        input {
-            height: var(--input-height);
-            padding: 0 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: '양진체', sans-serif;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
+        input[type="number"].narrow { width: 60px; } 
+        input[type="text"].medium, input[type="password"].medium { width: 130px; } 
+        input { height: var(--input-height); padding: 0 8px; border: 1px solid #ccc; border-radius: 6px; font-family: '양진체'; font-size: 0.9rem; outline: none; }
         input:focus { border-color: var(--border-color); background-color: #fffdec; }
 
-        .unit { font-size: 0.9rem; white-space: nowrap; }
-
-        /* 비밀번호 토글 */
         .pw-wrapper { position: relative; display: flex; align-items: center; }
-        .btn-toggle {
-            position: absolute; right: 3px;
-            height: 24px; padding: 0 5px;
-            background: #eee; border: 1px solid #ccc;
-            border-radius: 3px; cursor: pointer; font-family: '양진체'; font-size: 0.7rem;
-        }
+        .btn-toggle { position: absolute; right: 3px; height: 26px; padding: 0 6px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-family: '양진체'; font-size: 0.7rem; }
 
-        /* textarea 크기 유지 */
-        textarea {
-            width: 100%;
-            height: 210px;
-            padding: 12px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: '양진체', sans-serif;
-            font-size: 1rem;
-            line-height: 1.6;
-            resize: none;
-            display: block;
-        }
+        textarea { width: 100%; height: 240px; padding: 12px; margin-top: 10px; border: 1px solid #ccc; border-radius: 6px; font-family: '양진체'; font-size: 1rem; line-height: 1.6; resize: none; display: block; }
+        .submit-btn { width: 100%; height: 50px; background-color: var(--border-color); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-family: '양진체'; font-size: 1.2rem; font-weight: bold; margin-top: 15px; }
+        .submit-btn:hover { background-color: #333; transform: translateY(-2px); }
 
-        .submit-btn {
-            width: 100%; height: 50px;
-            background-color: var(--border-color); color: #fff;
-            border: none; border-radius: 6px; cursor: pointer;
-            font-family: '양진체'; font-size: 1.2rem; font-weight: bold;
-            margin-top: 10px;
-        }
-
-        @media (max-width: 850px) {
-            .main-container { flex-direction: column; overflow-y: auto; }
-            .worksheet-area { flex: none; height: 35vh; border-bottom: 2px solid var(--border-color); }
-            .input-area { flex: none; height: auto; }
-        }
-
-        /* 왼쪽 학습지 영역의 배경을 흰색으로 변경 */
-.worksheet-area {
-    flex: 1.2;
-    border-right: 2px solid var(--border-color);
-    background-color: #ffffff; /* 기존 #f0f0f0에서 흰색으로 변경 */
-    min-width: 0;
-    display: flex;
-    justify-content: center; /* 내부 요소가 혹시 작아지면 가운데 정렬 */
-}
+        @media (max-width: 850px) { .main-container { flex-direction: column; overflow-y: auto; } .worksheet-area { flex: none; height: 35vh; border-bottom: 3px solid #000; } }
     </style>
 </head>
 <body>
-
 <div class="main-container">
     <div class="worksheet-area">
         <iframe src="https://docs.google.com/document/d/e/2PACX-1vT8jHglOepTXYcSGreGWg1U8p8QQTtUTC1UYaO1_NCipLhQXisGgnXUGQZgicwME2X6tS79ErKwP0sK/pub?embedded=true"></iframe>
     </div>
-
     <div class="input-area">
-        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfkw-9Dgp-SwTOC9IJXKTncU0eIifgXDDImJMu9qiQm5DC8zw/formResponse" 
-              target="result" method="post" onsubmit="return numberCheck()">
-            
-            <h1>✏️ 1학년 활동지 제출</h1>
-
-            <fieldset>
-                <legend>본인 확인</legend>
-                <div class="flex-row" style="margin-bottom: 0;">
-                    <div class="input-item">
-                        <input type="number" name="entry.2080771161" class="narrow" placeholder="반" required>
-                        <span class="unit">반</span>
-                    </div>
-                    <div class="input-item">
-                        <input type="number" name="entry.1345934940" class="narrow" placeholder="번" required>
-                        <span class="unit">번</span>
-                    </div>
-                    <div class="input-item">
-                        <input type="text" name="entry.1290493017" class="medium" placeholder="이름" id="nameInput" required>
-                    </div>
+        <button class="nav-btn" onclick="location.href='search.html'">🔍 나의 기록 조회하기</button>
+        <h1>✏️ 1학년 활동지 제출</h1>
+        <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfkw-9Dgp-SwTOC9IJXKTncU0eIifgXDDImJMu9qiQm5DC8zw/formResponse" target="result" method="post" onsubmit="return numberCheck()">
+            <div class="input-box">
+                <span class="box-title">👤 본인 확인</span>
+                <div class="flex-row">
+                    <div class="input-item"><input type="number" name="entry.2080771161" class="narrow" placeholder="반" required><span class="unit">반</span></div>
+                    <div class="input-item"><input type="number" name="entry.1345934940" class="narrow" placeholder="번" required><span class="unit">번</span></div>
+                    <input type="text" name="entry.1290493017" class="medium" placeholder="이름" id="nameInput" required>
                     <div class="pw-wrapper">
                         <input type="password" name="entry.122918413" class="medium" placeholder="비밀번호" id="password" required>
-                        <button type="button" id="showPassword" class="btn-toggle">👁️</button>
+                        <button type="button" id="showPassword" class="btn-toggle">보이기</button>
                     </div>
                 </div>
-            </fieldset>
-
-            <fieldset>
-                <legend>활동 내용 작성</legend>
+            </div>
+            <div class="input-box">
+                <span class="box-title">📝 활동 내용 작성</span>
                 <div class="flex-row">
-                    <div class="input-item">
-                        <input type="number" name="entry.1014664555" class="narrow" required>
-                        <span class="unit">차시</span>
-                    </div>
-                    <div class="input-item">
-                        <input type="number" name="entry.987887802" class="narrow" required>
-                        <span class="unit">번 질문</span>
-                    </div>
-                    <span style="color: red; font-size: 0.8rem; margin-left: 10px;">
-                        <strong>* 질문 번호를 확인하세요!</strong>
-                    </span>
+                    <div class="input-item"><input type="number" name="entry.1014664555" class="narrow" required><span class="unit">차시</span></div>
+                    <div class="input-item"><input type="number" name="entry.987887802" class="narrow" required><span class="unit">번 질문</span></div>
+                    <span style="color: red; font-size: 0.8rem; margin-left: 5px;"><strong>* 질문 번호를 확인하세요!</strong></span>
                 </div>
-                <textarea name="entry.817526717" placeholder="여기에 답변 내용을 입력하세요." required></textarea>
-            </fieldset>
-
-            <input type="submit" value="활동지 제출하기" class="submit-btn">
+                <textarea name="entry.817526717" placeholder="여기에 답변 내용을 정성껏 입력하세요." required></textarea>
+                <input type="submit" value="활동지 제출하기" class="submit-btn">
+            </div>
             <iframe name="result" style="display: none;"></iframe>
         </form>
     </div>
 </div>
-
 <script>
     function numberCheck() {
-      var form = document.querySelector('form');
-      var inputs = form.querySelectorAll('input[required], textarea[required]');
-      var valid = true;
-      inputs.forEach(function(input) { if (!input.checkValidity()) valid = false; });
-      if (!valid) { alert("모든 필드를 정확히 입력해주세요."); return false; }
-    
-      if (confirm("제출하시겠습니까?")) {
-        alert("확인까지 눌러야 제출이 완료됩니다.");
-        setTimeout(function() {
-          document.querySelector('textarea[name="entry.817526717"]').value = '';
-          document.querySelector('input[name="entry.987887802"]').value = '';
-        }, 1000); 
-        return true;
-      }
-      return false;
+        var form = document.querySelector('form');
+        var inputs = form.querySelectorAll('input[required], textarea[required]');
+        var valid = true;
+        inputs.forEach(function(input) { if (!input.checkValidity()) valid = false; });
+        if (!valid) { alert("모든 필드를 정확히 입력해주세요."); return false; }
+        if (confirm("제출하시겠습니까?")) {
+            alert("확인 버튼까지 눌러야 제출이 완료됩니다.");
+            setTimeout(function() {
+                document.querySelector('textarea[name="entry.817526717"]').value = '';
+                document.querySelector('input[name="entry.987887802"]').value = '';
+            }, 1000); 
+            return true;
+        }
+        return false;
     }
-    
     document.getElementById('showPassword').addEventListener('click', function() {
-      var pw = document.getElementById('password');
-      pw.type = (pw.type === 'password') ? 'text' : 'password';
-      this.textContent = (pw.type === 'password') ? '👁️' : '🙈';
+        var pw = document.getElementById('password');
+        pw.type = (pw.type === 'password') ? 'text' : 'password';
+        this.textContent = (pw.type === 'password') ? '보이기' : '숨기기';
     });
-
     document.getElementById("password").addEventListener("input", function () {
-      this.value = this.value.toLowerCase().replace(/\s/g, "").replace(/[^a-z0-9]/g, "");
+        this.value = this.value.toLowerCase().replace(/\s/g, "").replace(/[^a-z0-9]/g, "");
     });
-    
     document.getElementById("nameInput").addEventListener("input", function () {
-      this.value = this.value.replace(/\s/g, "");
+        this.value = this.value.replace(/\s/g, "");
     });
 </script>
-
 </body>
 </html>
