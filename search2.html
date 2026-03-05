@@ -5,27 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2학년 활동 기록 조회</title>
     <style>
-        @font-face { font-family: 'GongGothicMedium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10@1.0/GongGothicMedium.woff') format('woff'); }
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'GongGothicMedium', sans-serif; overflow: hidden; }
+        @font-face {
+            font-family: '양진체'; /* ✅ 양진체로 변경 */
+            src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+        }
+
+        :root { --border-color: #000; }
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: '양진체', sans-serif; /* ✅ 폰트 적용 */
+            overflow: hidden;
+        }
+
         .main-container { display: flex; height: 100vh; width: 100vw; }
         
-        /* ✅ 비율 1.2 */
+        /* 비율 1.2 */
         .worksheet-area { flex: 1.2; border-right: 3px solid #000; background-color: #f0f0f0; display: flex; justify-content: center; }
         .worksheet-area iframe { width: 100%; height: 100%; border: none; }
 
-        /* ✅ 비율 0.8 */
-        .search-area { flex: 0.8; padding: 25px; overflow-y: auto; background-color: #ffffff; display: flex; flex-direction: column; }
+        /* 비율 0.8 */
+        .search-area {
+            flex: 0.8;
+            padding: 25px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+        }
         
-        .nav-btn { align-self: flex-end; padding: 8px 15px; background-color: #f0fff0; border: 2px solid #000; border-radius: 8px; font-size: 0.9rem; cursor: pointer; box-shadow: 3px 3px 0px #000; margin-bottom: 10px; }
+        .nav-btn {
+            align-self: flex-end;
+            padding: 8px 15px;
+            background-color: #f0fff0;
+            border: 2px solid #000;
+            border-radius: 8px;
+            font-family: '양진체'; /* ✅ 폰트 적용 */
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #000;
+            margin-bottom: 10px;
+        }
+        .nav-btn:hover { background-color: #e8f5e8; transform: translate(1px, 1px); box-shadow: 2px 2px 0px #000; }
+
         h2 { text-align: center; font-size: 1.6rem; margin: 0 0 20px 0; }
-        .search-box { background: #ffffff; padding: 20px; border: 2px solid #000; border-radius: 12px; box-shadow: 6px 6px 0px #000; margin-bottom: 25px; }
-        input { width: calc(100% - 24px); padding: 12px; margin: 8px 0; border: 1px solid #bbb; border-radius: 6px; font-family: inherit; font-size: 1rem; }
+
+        .search-box {
+            background: #ffffff;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 12px;
+            box-shadow: 6px 6px 0px #000;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-family: '양진체', sans-serif; /* ✅ 폰트 적용 */
+            font-size: 1rem;
+        }
+
         .pw-container { position: relative; width: 100%; }
         .toggle-pw { position: absolute; right: 15px; top: 20px; cursor: pointer; font-size: 1.2rem; }
-        button.search-btn { width: 100%; padding: 14px; background-color: #000; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-family: inherit; font-size: 1.1rem; margin-top: 15px; }
-        .result-item { background: #fffdf0; border: 1px dashed #999; padding: 15px; margin-bottom: 12px; border-radius: 8px; line-height: 1.6; animation: fadeIn 0.5s; }
+
+        button.search-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: '양진체'; /* ✅ 폰트 적용 */
+            font-size: 1.1rem;
+            margin-top: 15px;
+            transition: 0.2s;
+        }
+        button.search-btn:hover { background-color: #333; transform: translateY(-2px); }
+
+        .result-item {
+            background: #fffdf0;
+            border: 1px dashed #999;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            line-height: 1.6;
+            animation: fadeIn 0.5s;
+        }
+
+        .q-no { font-weight: bold; color: #d35400; margin-bottom: 8px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 850px) { .main-container { flex-direction: column; } .worksheet-area { flex: none; height: 40vh; } }
+
+        @media (max-width: 850px) {
+            .main-container { flex-direction: column; overflow-y: auto; }
+            .worksheet-area { flex: none; height: 40vh; border-bottom: 3px solid #000; }
+        }
     </style>
 </head>
 <body>
@@ -71,13 +151,13 @@
         fetch(`${scriptURL}?${params.toString()}`)
             .then(res => res.json())
             .then(data => {
-                if (!data || data.length === 0) {
-                    resultsDiv.innerHTML = "<p style='color:red; text-align:center;'>기록이 없습니다.</p>";
+                if (!data || data.length === 0 || data.message) {
+                    resultsDiv.innerHTML = "<p style='color:red; text-align:center;'>일치하는 기록이 없습니다.</p>";
                     return;
                 }
                 let html = "<h3>조회 결과</h3>";
                 data.forEach(item => {
-                    html += `<div class="result-item">📌 ${item.questionNo}번 질문 답변<br>${item.content}</div>`;
+                    html += `<div class="result-item"><div class="q-no">📌 ${item.questionNo}번 질문 답변</div><div>${item.content}</div></div>`;
                 });
                 resultsDiv.innerHTML = html;
             });
