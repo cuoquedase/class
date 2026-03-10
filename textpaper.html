@@ -182,7 +182,7 @@
         inputs.forEach(function(input) { if (!input.checkValidity()) valid = false; });
         if (!valid) { alert("모든 필드를 정확히 입력해주세요."); return false; }
         if (confirm("제출하시겠습니까?")) {
-            alert("완료를 눌러야 제출이 됩니다.");
+            alert("확인을 눌러야 제출이 됩니다.");
             setTimeout(function() {
                 document.querySelector('textarea[name="entry.1653996263"]').value = '';
                 document.querySelector('input[name="entry.1403681020"]').value = '';
