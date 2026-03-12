@@ -47,10 +47,13 @@
         
         /* 너비 최적화 */
         input[type="number"].narrow { width: 60px; } 
-        input[type="text"].medium { width: 130px; } 
-        input[type="password"].medium { width: 200px; } 
+        input[type="text"].medium { width: 130px; }
         input { height: var(--input-height); padding: 0 8px; border: 1px solid #ccc; border-radius: 6px; font-family: '양진체'; font-size: 0.9rem; outline: none; }
         input:focus { border-color: var(--border-color); background-color: #fffdec; }
+
+        #password {
+        width: 200px;
+        }
 
         .pw-wrapper { position: relative; display: flex; align-items: center; }
         .btn-toggle { position: absolute; right: 3px; height: 26px; padding: 0 6px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-family: '양진체'; font-size: 0.7rem; }
