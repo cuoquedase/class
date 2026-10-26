@@ -1,0 +1,1016 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2학년 차시별 완성 활동지 조회</title>
+
+    <style>
+        @font-face {
+            font-family: '양진체';
+            src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
+        }
+
+        :root {
+            --border-color: #000;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: '양진체', sans-serif;
+            overflow: hidden;
+        }
+
+        .main-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* 왼쪽 학습지 영역 */
+        .worksheet-area {
+            flex: 1.2;
+            min-width: 0;
+            border-right: 3px solid #000;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .worksheet-area iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 오른쪽 조회 영역 */
+        .search-area {
+            flex: 0.8;
+            min-width: 0;
+            padding: 25px;
+            overflow-y: auto;
+            background: white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-btn {
+            align-self: flex-end;
+            padding: 8px 15px;
+            background: #f0fff0;
+            border: 2px solid #000;
+            border-radius: 8px;
+            font-family: '양진체';
+            font-size: 0.9rem;
+            cursor: pointer;
+            box-shadow: 3px 3px 0 #000;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn:hover {
+            background: #e8f5e8;
+            transform: translate(1px, 1px);
+            box-shadow: 2px 2px 0 #000;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.6rem;
+            margin: 0 0 20px;
+        }
+
+        .search-box {
+            background: white;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 12px;
+            box-shadow: 6px 6px 0 #000;
+            margin-bottom: 25px;
+        }
+
+        .box-title {
+            display: block;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /*
+         * 입력 항목을 좌우로 배치
+         * 왼쪽: 항목명
+         * 오른쪽: 입력창
+         */
+        .form-row {
+            display: grid;
+            grid-template-columns: 90px minmax(0, 1fr);
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 13px;
+        }
+
+        .form-row label {
+            font-size: 1rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .form-row input {
+            width: 100%;
+            min-width: 0;
+            height: 42px;
+            padding: 0 12px;
+            border: 1px solid #bbb;
+            border-radius: 6px;
+            font-family: '양진체';
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .form-row input:focus {
+            border-color: #000;
+            background: #fffdec;
+        }
+
+        .pw-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .pw-container input {
+            padding-right: 48px;
+        }
+
+        .toggle-pw {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            font-size: 1.15rem;
+            cursor: pointer;
+        }
+
+        .section-divider {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 22px 0 18px;
+        }
+
+        .search-btn {
+            width: 100%;
+            padding: 14px;
+            background: #000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: '양진체';
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+
+        .search-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.5;
+            cursor: wait;
+        }
+
+        .notice {
+            color: #777;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-top: 14px;
+        }
+
+        /* 제출 현황 */
+        .summary-box {
+            background: #f0fff0;
+            border: 2px solid #000;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .summary-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .summary-count {
+            margin-top: 8px;
+            white-space: pre-line;
+        }
+
+        /* 문항 카드 */
+        .result-item {
+            background: #fffdf0;
+            border: 1px dashed #999;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            line-height: 1.6;
+        }
+
+        .q-no {
+            font-weight: bold;
+            color: #d35400;
+            margin-bottom: 8px;
+        }
+
+        .question-text {
+            font-size: 1.03rem;
+            font-weight: bold;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #ddd;
+            overflow-wrap: anywhere;
+        }
+
+        .answer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .answer-label {
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        .status {
+            font-size: 0.8rem;
+            padding: 4px 8px;
+            border-radius: 5px;
+        }
+
+        .status.complete {
+            background: #def5e1;
+            color: #166b30;
+        }
+
+        .status.missing {
+            background: #eee;
+            color: #777;
+        }
+
+        .status.warning {
+            background: #fff0d7;
+            color: #a34b00;
+        }
+
+        .answer-content {
+            background: white;
+            padding: 14px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .answer-content.empty {
+            color: #999;
+            background: #f7f7f7;
+        }
+
+        .submit-time {
+            text-align: right;
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+
+        /* 이전 답안 드롭다운 */
+        .history-details {
+            margin-top: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: white;
+            overflow: hidden;
+        }
+
+        .history-details summary {
+            padding: 13px;
+            background: #f5f5f5;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .history-details summary:hover {
+            background: #ebebeb;
+        }
+
+        .history-details[open] summary {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .history-list {
+            padding: 12px;
+        }
+
+        .history-item {
+            padding: 12px 5px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-date {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+        }
+
+        .history-content {
+            background: #f8f8f8;
+            padding: 12px;
+            border-radius: 6px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.7;
+            font-size: 0.9rem;
+        }
+
+        .message {
+            text-align: center;
+            padding: 20px 10px;
+            color: #777;
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .message.error {
+            color: #bd3333;
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 850px) {
+            .main-container {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+
+            .worksheet-area {
+                flex: none;
+                height: 35vh;
+                border-right: none;
+                border-bottom: 3px solid #000;
+            }
+
+            .search-area {
+                flex: none;
+                overflow: visible;
+                padding: 18px;
+            }
+
+            .form-row {
+                grid-template-columns: 75px minmax(0, 1fr);
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- 왼쪽: 기존 학습지 -->
+    <div class="worksheet-area">
+        <iframe
+            title="2학년 학습지"
+            src="https://docs.google.com/document/d/e/2PACX-1vS0fvhPPwZcCbgQAXvjjTEv7R6ds_h5-HLgN9y0tS7w5RGDtWe8ZzWaBtSTCMBJBKU2-42iVqq9nlo7/pub?embedded=true">
+        </iframe>
+    </div>
+
+    <!-- 오른쪽: 활동지 조회 -->
+    <div class="search-area">
+
+        <button
+            type="button"
+            class="nav-btn"
+            onclick="location.href='textpaper.html'">
+            ✍️ 활동지 제출하러 가기
+        </button>
+
+        <h2>📚 차시별 완성 활동지 조회</h2>
+
+        <form class="search-box" id="searchForm">
+
+            <span class="box-title">👤 본인 확인</span>
+
+            <div class="form-row">
+                <label for="class">학반</label>
+                <input
+                    type="number"
+                    id="class"
+                    min="1"
+                    max="10"
+                    placeholder="반 입력"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="num">번호</label>
+                <input
+                    type="number"
+                    id="num"
+                    min="1"
+                    max="50"
+                    placeholder="번호 입력"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="name">이름</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="이름 입력"
+                    pattern="^[ㄱ-ㅎㅏ-ㅣ가-힣]+$"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="pw">비밀번호</label>
+                <div class="pw-container">
+                    <input
+                        type="password"
+                        id="pw"
+                        placeholder="비밀번호 입력"
+                        pattern="^[a-z0-9]+$"
+                        autocomplete="off"
+                        required>
+                    <button
+                        type="button"
+                        class="toggle-pw"
+                        onclick="togglePassword()"
+                        aria-label="비밀번호 보이기">
+                        👁️
+                    </button>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <span class="box-title">📝 조회할 활동지</span>
+
+            <div class="form-row">
+                <label for="period">차시</label>
+                <input
+                    type="number"
+                    id="period"
+                    min="1"
+                    placeholder="조회할 차시 입력"
+                    required>
+            </div>
+
+            <button
+                type="submit"
+                class="search-btn"
+                id="searchButton">
+                차시별 완성 활동지 불러오기
+            </button>
+
+            <div class="notice">
+                ※ 각 문항의 최신 답안과 제출 시각을 확인할 수 있습니다.
+                이전에 제출한 답안은 '이전 답안 보기'를 눌러 확인하세요.
+            </div>
+
+        </form>
+
+        <div id="results" aria-live="polite">
+            <p class="message">
+                본인 정보를 입력한 뒤
+                조회할 차시를 입력해 주세요.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    /*
+     * 1. 기존 Apps Script 주소
+     */
+    const scriptURL =
+        "https://script.google.com/macros/s/AKfycby6UxXYETf0rDuHPyqwY6YDCCEGZpH4lSNnD5tsj1ThC7TEIVcH97aSYjDqbp3gC9uf/exec";
+
+
+    /*
+     * 2. 질문 시트의 문항 데이터
+     * 현재 등록된 1, 2, 4차시
+     */
+    const QUESTION_BANK = {
+        "1": [
+            [1, "인간의 이주와 동물의 이주를 비교하시오."],
+            [2, "인간 이주의 역사를 정리하시오."],
+            [3, "집단 이주'와 '집단 너머 이주'를 비교하시오."],
+            [4, "이주에 대한 필자의 관점을 정리하시오."],
+            [5, "젠트리피케이션 현상의 과정을 정리하시오."],
+            [6, "서양의 젠트리피케이션과 우리나라 주거 지역의 젠트리피케이션의 공통점과 차이점을 비교하시오."],
+            [7, "우리나라 상업 지구의 젠트리피케이션이 발생하는 지역을 설명하시오."],
+            [8, "우리나라 상업 지구의 젠트리피케이션이 발생하는 과정을 설명하시오."],
+            [9, "우리나라 상업 지구의 젠트리피케이션이 발생하는 과정을 설명하시오."],
+            [10, "우리나라 상업 지구의 젠트리피케이션의 해결방안을 설명하시오."],
+            [11, "이주'라는 화제에 대한 (가) 글의 성격과, (나) 글의 성격을 설명하시오."],
+            [12, "이주'라는 화제를 바탕으로 (가) 글을 요약하시오."],
+            [13, "이주'라는 화제를 바탕으로 (나) 글을 요약하시오."],
+            [14, "이주'라는 화제에 관한 (가)글의 필자의 관점을 정리하시오."],
+            [15, "이주'라는 화제에 관한  (나)글의 필자의 관점을 정리하시오."],
+            [16, "이주'에 관한 자신의 관점을 정리하시오."]
+        ],
+
+        "2": [
+            [1, "'일야구도하기'에서 산중에 살며 들었던 계곡물 소리가 다르게 들린 경험에서 깨달은 바는 무엇인가"],
+            [2, "'일야구도하기'에서 낮에 강을 건널 때의 경험과 밤에 강을 건널 때의 경험에 대해 정리하시오"],
+            [3, "'일야구도하기'에서 낮에 강을 건널 때의 깨달음과 밤에 강을 건널 때의 깨달음에 대해 정리하시오"],
+            [4, "'일야구도하기'에 나타나는 필자의 경험과 깨달음을 토대로 필자가 말하고자하는 바는 무엇인가"],
+            [5, "'일야구도하기'의 4단 구성 중 '전'과 '결'의 내용을 정리하세요."],
+            [6, "'일야구도하기'에서 사물의 의인화가 드러나는 부분을 찾으시오."],
+            [7, "'일야구도하기'에서 비유적 표현이 드러나는 부분을 찾으시오."],
+            [8, "'일야구도하기'를 쓴 이유를 '깨달음'과 '경고'를 중심으로 설명하시오."],
+            [9, "일야구도하기'의 필자가 얻은 깨달음을 오늘날에 어떻게 적용할 수 있는지 서술하시오."]
+        ],
+
+        "4": [
+            [1, "기계로 인해 줄어드는 노동 시간이 여가의 증대로 이어지지 않는 이유는 무엇인가?"],
+            [2, "시간 절약 도우미에 어떤 것들이 있을지 우리 생활에서 예를 찾아보자."],
+            [3, "필자가 시간 빈곤 현상을 '주관적' 감정 상태'라고 한 이유는 무엇인가?"],
+            [4, "현대 사회에서 바쁘다는 것은 무엇을 상징하는가?"],
+            [5, "문단 1, 2의 중심 내용은 무엇인가?"],
+            [6, "문단 6의 중심내용은 무엇인가?"],
+            [7, "문단 8의 중심내용은 무엇인가?"],
+            [8, "문단 9의 중심내용은 무엇인가?"],
+            [9, "문단 11, 12의 중심내용은 무엇인가?"],
+            [10, "정의, 예시, 나열의 내용 전개 방식이 사용된 문단 각각 몇 문단인가?"],
+            [11, "빨리빨리 병이란 무엇인가?"],
+            [12, "필자는 스마트폰을 어떻게 바라보고 있는지 추론해 보자."],
+            [13, "제목에 '역설적'이라는 단어를 사용한 필자의 의도를 추론해 보자."],
+            [14, "'바쁘다는 것은 근면, 성공, 멋짐의 이미지를 지닌 자랑할 만한 일로 여겨져 사회적 부러움의 상징이 되었다. 현대 사회에서 바쁘다는 것은 높은 사회적 지위를 드러내는 징표로 통한다'라는 문장에 담긴 사회문화적 이념과 이런 표현을 제시한 필자의 의도를 평가해 보자."],
+            [15, "타당성, 공정성, 신뢰성을 기준으로 글의 내용을 평가하고, 그렇게 평가한 이유를 말해보자."]
+        ]
+    };
+
+
+    /*
+     * 3. 비밀번호 표시/숨기기
+     */
+    function togglePassword() {
+        const pw = document.getElementById('pw');
+        const btn = document.querySelector('.toggle-pw');
+
+        pw.type = pw.type === 'password'
+            ? 'text'
+            : 'password';
+
+        btn.textContent = pw.type === 'password'
+            ? '👁️'
+            : '🙈';
+
+        btn.setAttribute(
+            'aria-label',
+            pw.type === 'password'
+                ? '비밀번호 보이기'
+                : '비밀번호 숨기기'
+        );
+    }
+
+
+    /*
+     * 4. 입력 문자 제한
+     */
+    document.getElementById('name')
+        .addEventListener('input', function() {
+            this.value = this.value.replace(
+                /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g, ''
+            );
+        });
+
+    document.getElementById('pw')
+        .addEventListener('input', function() {
+            this.value = this.value.replace(
+                /[^a-z0-9]/g, ''
+            );
+        });
+
+
+    /*
+     * 5. 검색 폼
+     */
+    document.getElementById('searchForm')
+        .addEventListener('submit', function(event) {
+            event.preventDefault();
+            searchData();
+        });
+
+
+    /*
+     * 6. 문항 번호 정규화
+     */
+    function normalizeQuestionNo(value) {
+        const text = String(value ?? '').trim();
+
+        return /^\d+$/.test(text)
+            ? String(Number(text))
+            : text;
+    }
+
+
+    /*
+     * 7. 제출 시각 표시
+     */
+    function formatTimestamp(value) {
+        if (!value) {
+            return '제출 시각 정보 없음';
+        }
+
+        const date = new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+            return String(value);
+        }
+
+        return new Intl.DateTimeFormat('ko-KR', {
+            timeZone: 'Asia/Seoul',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hourCycle: 'h23'
+        }).format(date);
+    }
+
+
+    /*
+     * 8. 안전한 HTML 요소 생성
+     */
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
+
+        if (className) {
+            element.className = className;
+        }
+
+        if (text !== undefined) {
+            element.textContent = text;
+        }
+
+        return element;
+    }
+
+
+    /*
+     * 9. 안내 메시지
+     */
+    function showMessage(message, isError = false) {
+        const root = document.getElementById('results');
+        root.replaceChildren();
+
+        const p = createElement(
+            'p',
+            isError ? 'message error' : 'message',
+            message
+        );
+
+        root.appendChild(p);
+    }
+
+
+    /*
+     * 10. Apps Script 조회
+     */
+    async function searchData() {
+        const button = document.getElementById('searchButton');
+
+        const period = document.getElementById('period')
+            .value.trim();
+
+        const params = new URLSearchParams({
+            class: document.getElementById('class').value.trim(),
+            num: document.getElementById('num').value.trim(),
+            name: document.getElementById('name').value.trim(),
+            pw: document.getElementById('pw').value.trim(),
+            period: period
+        });
+
+        showMessage('활동지를 불러오는 중입니다... 🔍');
+        button.disabled = true;
+
+        try {
+            const response = await fetch(
+                scriptURL + '?' + params.toString(),
+                { cache: 'no-store' }
+            );
+
+            if (!response.ok) {
+                throw new Error('서버 응답 오류');
+            }
+
+            const data = await response.json();
+
+            if (!Array.isArray(data)) {
+                showMessage(
+                    '조회에 실패했습니다. 본인 확인 정보를 확인해 주세요.',
+                    true
+                );
+                return;
+            }
+
+            if (data.length === 0) {
+                showMessage(
+                    '일치하는 제출 기록이 없습니다.\n' +
+                    '본인 정보와 차시를 확인해 주세요.',
+                    true
+                );
+                return;
+            }
+
+            // 새 Apps Script가 적용되어 있는지 확인
+            if (data.some(item => !Array.isArray(item.history))) {
+                showMessage(
+                    'Apps Script가 이전 버전으로 실행 중입니다.\n' +
+                    '새 버전으로 배포했는지 확인해 주세요.',
+                    true
+                );
+                return;
+            }
+
+            renderWorksheet(period, data);
+
+        } catch (error) {
+            console.error('조회 오류:', error);
+
+            showMessage(
+                '조회 서버에 연결하지 못했습니다.\n' +
+                '인터넷 연결과 Apps Script 배포 상태를 확인해 주세요.',
+                true
+            );
+        } finally {
+            button.disabled = false;
+        }
+    }
+
+
+    /*
+     * 11. 차시별 완성 활동지 생성
+     */
+    function renderWorksheet(period, data) {
+        const root = document.getElementById('results');
+        root.replaceChildren();
+
+        const questionList = QUESTION_BANK[String(period)] || [];
+        const answerMap = new Map();
+
+        data.forEach(item => {
+            const key = normalizeQuestionNo(item.questionNo);
+
+            if (!key) return;
+
+            answerMap.set(key, item);
+        });
+
+        const registered = new Set(
+            questionList.map(q => String(q[0]))
+        );
+
+        const completed = questionList.filter(q =>
+            answerMap.has(String(q[0]))
+        ).length;
+
+        // 상단 요약
+        const summary = createElement('div', 'summary-box');
+
+        summary.appendChild(createElement(
+            'div',
+            'summary-title',
+            period + '차시 완성 활동지'
+        ));
+
+        summary.appendChild(createElement(
+            'div',
+            'summary-count',
+            '전체 문항: ' + questionList.length + '개\n' +
+            '답안 제출 문항: ' + completed + '개\n' +
+            '미제출 문항: ' +
+            (questionList.length - completed) + '개'
+        ));
+
+        root.appendChild(summary);
+
+        if (questionList.length === 0) {
+            root.appendChild(createElement(
+                'p',
+                'message',
+                '이 차시의 질문 목록이 아직 등록되어 있지 않습니다.'
+            ));
+        }
+
+        // 정식 질문 순서에 따라 표시
+        questionList.forEach(([number, question]) => {
+            const record = answerMap.get(String(number)) || null;
+
+            addQuestionCard(
+                root,
+                number,
+                question,
+                record,
+                false
+            );
+        });
+
+        // 등록되지 않은 질문 번호의 제출 기록
+        const unknown = [...answerMap.entries()]
+            .filter(([key]) => !registered.has(key))
+            .sort((a, b) => Number(a[0]) - Number(b[0]));
+
+        if (unknown.length > 0) {
+            const heading = createElement(
+                'h3',
+                '',
+                '⚠ 질문 목록에 없는 번호로 제출된 답안'
+            );
+
+            heading.style.color = '#bd3333';
+            root.appendChild(heading);
+
+            unknown.forEach(([key, record]) => {
+                addQuestionCard(
+                    root,
+                    key,
+                    '현재 등록된 질문 목록에 없는 문항 번호입니다.',
+                    record,
+                    true
+                );
+            });
+        }
+    }
+
+
+    /*
+     * 12. 문항 카드 생성
+     * 최신 답안 + 제출 시각 + 이전 답안
+     */
+    function addQuestionCard(
+        root,
+        number,
+        question,
+        record,
+        unregistered
+    ) {
+        const card = createElement('section', 'result-item');
+
+        card.appendChild(createElement(
+            'div',
+            'q-no',
+            '📌 ' + number + '번 질문'
+        ));
+
+        card.appendChild(createElement(
+            'div',
+            'question-text',
+            question
+        ));
+
+        const header = createElement('div', 'answer-header');
+
+        header.appendChild(createElement(
+            'span',
+            'answer-label',
+            '현재 최신 답안'
+        ));
+
+        const status = createElement('span', 'status');
+
+        if (!record) {
+            status.classList.add('missing');
+            status.textContent = '미제출';
+
+        } else if (unregistered) {
+            status.classList.add('warning');
+            status.textContent = '문항 번호 확인 필요';
+
+        } else {
+            status.classList.add('complete');
+            status.textContent = '제출 완료';
+        }
+
+        header.appendChild(status);
+        card.appendChild(header);
+
+        // 최신 답안 표시
+        const answer = createElement(
+            'div',
+            'answer-content',
+            record
+                ? String(record.content ?? '') || '(빈 답안)'
+                : '현재 제출된 답안이 없습니다.'
+        );
+
+        if (!record) {
+            answer.classList.add('empty');
+        }
+
+        card.appendChild(answer);
+
+        // 최신 답안의 제출 시각
+        if (record) {
+            card.appendChild(createElement(
+                'div',
+                'submit-time',
+                '🕒 최종 제출: ' +
+                formatTimestamp(record.timestamp)
+            ));
+        }
+
+        /*
+         * 이전 답안 드롭다운
+         * 이력이 있을 때만 생성
+         */
+        if (
+            record &&
+            Array.isArray(record.history) &&
+            record.history.length > 0
+        ) {
+            const details = createElement(
+                'details',
+                'history-details'
+            );
+
+            const summary = createElement(
+                'summary',
+                '',
+                '📂 이전 답안 보기 (' +
+                record.history.length + '건)'
+            );
+
+            details.appendChild(summary);
+
+            const historyList = createElement(
+                'div',
+                'history-list'
+            );
+
+            // 가장 최근 이전 답안부터 표시
+            record.history.forEach(oldRecord => {
+                const item = createElement(
+                    'div',
+                    'history-item'
+                );
+
+                item.appendChild(createElement(
+                    'div',
+                    'history-date',
+                    '🕒 ' +
+                    formatTimestamp(oldRecord.timestamp)
+                ));
+
+                item.appendChild(createElement(
+                    'div',
+                    'history-content',
+                    String(oldRecord.content ?? '') ||
+                    '(빈 답안)'
+                ));
+
+                historyList.appendChild(item);
+            });
+
+            details.appendChild(historyList);
+            card.appendChild(details);
+        }
+
+        root.appendChild(card);
+    }
+
+</script>
+
+</body>
+</html>
