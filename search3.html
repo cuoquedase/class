@@ -1,18 +1,13 @@
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>2학년 차시별 완성 활동지 조회</title>
 
     <style>
-        @font-face {
-            font-family: '양진체';
-            src: url('https://fastly.jsdelivr.net/gh/supernovice-lab/font@0.9/yangjin.woff') format('woff');
-        }
+        /* 나눔스퀘어라운드 웹폰트 */
+        @import url("https://cdn.jsdelivr.net/gh/innks/NanumSquareRound@master/nanumsquareround.min.css");
 
         * {
             box-sizing: border-box;
@@ -23,8 +18,13 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: '양진체', sans-serif;
+            font-family: 'NanumSquareRound', sans-serif;
+            font-weight: 400;
             overflow: hidden;
+        }
+
+        button, input, textarea {
+            font-family: 'NanumSquareRound', sans-serif;
         }
 
         .main-container {
@@ -33,9 +33,7 @@
             height: 100vh;
         }
 
-        /*
-         * 왼쪽 학습지 영역
-         */
+        /* 왼쪽 학습지 영역 */
         .worksheet-area {
             flex: 1.2;
             min-width: 0;
@@ -49,11 +47,10 @@
             width: 100%;
             height: 100%;
             border: none;
+            display: block;
         }
 
-        /*
-         * 오른쪽 조회 영역
-         */
+        /* 오른쪽 조회 영역 */
         .search-area {
             flex: 0.8;
             min-width: 0;
@@ -64,14 +61,15 @@
             flex-direction: column;
         }
 
+        /* 제출 페이지 이동 버튼 */
         .nav-btn {
             align-self: flex-end;
-            padding: 8px 15px;
+            padding: 10px 16px;
             background: #f0fff0;
             border: 2px solid #000;
             border-radius: 8px;
-            font-family: '양진체';
             font-size: 0.9rem;
+            font-weight: 700;
             cursor: pointer;
             box-shadow: 3px 3px 0 #000;
             margin-bottom: 10px;
@@ -86,12 +84,11 @@
         h2 {
             text-align: center;
             font-size: 1.6rem;
+            font-weight: 800;
             margin: 0 0 20px;
         }
 
-        /*
-         * 본인 확인 입력창
-         */
+        /* 본인 확인 입력 카드 */
         .search-box {
             background: white;
             padding: 20px;
@@ -103,16 +100,14 @@
 
         .box-title {
             display: block;
-            font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            font-weight: 700;
             margin-bottom: 15px;
             padding-bottom: 8px;
             border-bottom: 1px solid #eee;
         }
 
-        /*
-         * 왼쪽 항목명 / 오른쪽 입력창
-         */
+        /* 항목명 왼쪽, 입력창 오른쪽 */
         .form-row {
             display: grid;
             grid-template-columns: 90px minmax(0, 1fr);
@@ -122,8 +117,8 @@
         }
 
         .form-row label {
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 700;
             white-space: nowrap;
         }
 
@@ -134,8 +129,9 @@
             padding: 0 12px;
             border: 1px solid #bbb;
             border-radius: 6px;
-            font-family: '양진체';
-            font-size: 1rem;
+            background: #fff;
+            font-size: 0.95rem;
+            font-weight: 400;
             outline: none;
         }
 
@@ -144,6 +140,7 @@
             background: #fffdec;
         }
 
+        /* 비밀번호 보기/숨기기 */
         .pw-container {
             position: relative;
             width: 100%;
@@ -160,7 +157,7 @@
             transform: translateY(-50%);
             background: transparent;
             border: none;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             cursor: pointer;
         }
 
@@ -170,6 +167,7 @@
             margin: 22px 0 18px;
         }
 
+        /* 조회 버튼 */
         .search-btn {
             width: 100%;
             padding: 14px;
@@ -179,8 +177,8 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            font-family: '양진체';
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            font-weight: 700;
         }
 
         .search-btn:hover {
@@ -196,13 +194,12 @@
         .notice {
             color: #777;
             font-size: 0.85rem;
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.7;
             margin-top: 14px;
         }
 
-        /*
-         * 제출 현황
-         */
+        /* 제출 현황 */
         .summary-box {
             background: #f0fff0;
             border: 2px solid #000;
@@ -214,39 +211,44 @@
 
         .summary-title {
             font-size: 1.25rem;
-            font-weight: bold;
+            font-weight: 800;
         }
 
         .summary-count {
             margin-top: 8px;
             white-space: pre-line;
+            font-size: 0.95rem;
+            font-weight: 400;
         }
 
-        /*
-         * 질문 및 답안 카드
-         */
+        /* 질문 및 답안 카드 */
         .result-item {
             background: #fffdf0;
             border: 1px dashed #999;
             padding: 18px;
             margin-bottom: 15px;
             border-radius: 8px;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
+        /* 질문 번호 */
         .q-no {
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 800;
             color: #d35400;
             margin-bottom: 8px;
         }
 
+        /* 질문 원문 */
         .question-text {
-            font-size: 1.03rem;
-            font-weight: bold;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.75;
             padding-bottom: 12px;
             margin-bottom: 12px;
             border-bottom: 1px solid #ddd;
             overflow-wrap: anywhere;
+            white-space: pre-wrap;
         }
 
         .answer-header {
@@ -261,11 +263,14 @@
         .answer-label {
             color: #555;
             font-size: 0.85rem;
+            font-weight: 700;
         }
 
+        /* 답안 제출 상태 */
         .status {
             display: inline-block;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
+            font-weight: 700;
             padding: 4px 8px;
             border-radius: 5px;
         }
@@ -285,6 +290,7 @@
             color: #a34b00;
         }
 
+        /* 최신 답안 */
         .answer-content {
             background: white;
             padding: 14px;
@@ -292,8 +298,9 @@
             border-radius: 6px;
             white-space: pre-wrap;
             overflow-wrap: anywhere;
-            line-height: 1.8;
-            font-size: 0.95rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.85;
         }
 
         .answer-content.empty {
@@ -301,16 +308,16 @@
             background: #f7f7f7;
         }
 
+        /* 최종 제출 시각 */
         .submit-time {
             text-align: right;
             color: #666;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 400;
             margin-top: 10px;
         }
 
-        /*
-         * 이전 답안 드롭다운
-         */
+        /* 이전 답안 드롭다운 */
         .history-details {
             margin-top: 15px;
             border: 1px solid #ccc;
@@ -322,8 +329,8 @@
         .history-details summary {
             padding: 13px;
             background: #f5f5f5;
-            font-weight: bold;
             font-size: 0.9rem;
+            font-weight: 700;
             cursor: pointer;
             user-select: none;
         }
@@ -351,7 +358,8 @@
 
         .history-date {
             color: #666;
-            font-size: 0.8rem;
+            font-size: 0.82rem;
+            font-weight: 400;
             margin-bottom: 8px;
         }
 
@@ -361,10 +369,12 @@
             border-radius: 6px;
             white-space: pre-wrap;
             overflow-wrap: anywhere;
-            line-height: 1.7;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+            line-height: 1.8;
         }
 
+        /* 안내 및 오류 메시지 */
         .message {
             text-align: center;
             padding: 20px 10px;
@@ -377,13 +387,16 @@
             color: #bd3333;
         }
 
-        /*
-         * 모바일 대응
-         */
+        /* 모바일 화면 */
         @media (max-width: 850px) {
+            html, body {
+                overflow: auto;
+            }
+
             .main-container {
                 flex-direction: column;
-                overflow-y: auto;
+                height: auto;
+                min-height: 100vh;
             }
 
             .worksheet-area {
@@ -426,7 +439,7 @@
 
 <div class="main-container">
 
-    <!-- 왼쪽: 학습지 원문 -->
+    <!-- 왼쪽: 기존 학습지 -->
     <div class="worksheet-area">
         <iframe
             title="2학년 학습지"
@@ -434,7 +447,7 @@
         </iframe>
     </div>
 
-    <!-- 오른쪽: 활동지 조회 -->
+    <!-- 오른쪽: 조회 화면 -->
     <div class="search-area">
 
         <button
@@ -526,8 +539,9 @@
             </button>
 
             <div class="notice">
-                ※ 질문 내용은 스프레드시트의 '질문' 시트와 자동 연동됩니다.
-                각 문항의 최신 답안과 제출 시각을 확인하고,
+                ※ 질문 내용은 스프레드시트의 '질문' 시트와
+                자동 연동됩니다.
+                각 문항의 최신 답안과 제출 시각을 확인할 수 있으며,
                 이전 답안은 드롭다운을 펼쳐 확인할 수 있습니다.
             </div>
 
@@ -544,19 +558,16 @@
 </div>
 
 <script>
-
     /*
-     * 1. 기존 Apps Script URL
-     *
-     * 기존 웹앱 배포를 새 버전으로 업데이트하면
-     * 주소 변경 없이 계속 사용할 수 있음.
+     * 1. 기존 Apps Script 주소
+     * mode=worksheet 지원 버전 사용
      */
     const scriptURL =
         "https://script.google.com/macros/s/AKfycby6UxXYETf0rDuHPyqwY6YDCCEGZpH4lSNnD5tsj1ThC7TEIVcH97aSYjDqbp3gC9uf/exec";
 
 
     /*
-     * 2. 비밀번호 보이기 / 숨기기
+     * 2. 비밀번호 보기/숨기기
      */
     function togglePassword() {
         const pw = document.getElementById('pw');
@@ -580,25 +591,27 @@
 
 
     /*
-     * 3. 입력 문자 제한
+     * 3. 입력 제한
      */
     document.getElementById('name')
         .addEventListener('input', function() {
             this.value = this.value.replace(
-                /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g, ''
+                /[^ㄱ-ㅎㅏ-ㅣ가-힣]/g,
+                ''
             );
         });
 
     document.getElementById('pw')
         .addEventListener('input', function() {
             this.value = this.value.replace(
-                /[^a-z0-9]/g, ''
+                /[^a-z0-9]/g,
+                ''
             );
         });
 
 
     /*
-     * 4. 검색 버튼
+     * 4. 조회 폼 제출
      */
     document.getElementById('searchForm')
         .addEventListener('submit', function(event) {
@@ -620,10 +633,8 @@
 
 
     /*
-     * 6. 타임스탬프 표시
-     *
-     * Apps Script에서 ISO 형식으로 보낸 시간을
-     * 한국 시간으로 출력
+     * 6. 제출 시각 표시
+     * ISO 타임스탬프를 한국 시간으로 출력
      */
     function formatTimestamp(value) {
         if (!value) {
@@ -651,9 +662,7 @@
 
     /*
      * 7. HTML 요소 생성
-     *
-     * 학생 답안을 innerHTML로 삽입하지 않고
-     * textContent로 표시
+     * 학생 답안은 textContent로 표시
      */
     function createElement(tag, className, text) {
         const element = document.createElement(tag);
@@ -671,7 +680,7 @@
 
 
     /*
-     * 8. 안내 메시지
+     * 8. 안내 메시지 표시
      */
     function showMessage(message, isError = false) {
         const root = document.getElementById('results');
@@ -687,11 +696,7 @@
 
     /*
      * 9. Apps Script 조회
-     *
-     * mode=worksheet 추가
-     *
-     * 한 번의 요청으로
-     * 질문 시트 + 최신 답안 + 이전 답안 수신
+     * 질문 + 최신 답안 + 이전 답안 수신
      */
     async function searchData() {
         const button = document.getElementById('searchButton');
@@ -724,7 +729,7 @@
             const data = await response.json();
 
             /*
-             * 서버 오류 또는 본인 확인 실패
+             * 서버 오류 / 본인 확인 실패
              */
             if (
                 !data ||
@@ -750,21 +755,21 @@
             }
 
             /*
-             * 새 API 데이터 형식 확인
+             * 응답 구조 확인
              */
             if (
                 !Array.isArray(data.questions) ||
                 !Array.isArray(data.answers)
             ) {
                 showMessage(
-                    '서버에서 질문과 답안 데이터를 정상적으로 받지 못했습니다.',
+                    '질문과 답안 데이터를 정상적으로 받지 못했습니다.',
                     true
                 );
                 return;
             }
 
             /*
-             * 차시별 완성 활동지 출력
+             * 완성 활동지 표시
              */
             renderWorksheet(
                 period,
@@ -788,13 +793,34 @@
 
 
     /*
-     * 10. 차시별 완성 활동지 생성
-     *
-     * questions:
-     *   질문 시트에서 실시간 조회한 문항
-     *
-     * answers:
-     *   해당 학생의 최신 답안 + 이전 답안
+     * 10. 질문 번호 정렬
+     */
+    function compareQuestionNo(a, b) {
+        const aText = String(a);
+        const bText = String(b);
+
+        const na = Number(aText);
+        const nb = Number(bText);
+
+        if (
+            aText !== '' &&
+            bText !== '' &&
+            Number.isFinite(na) &&
+            Number.isFinite(nb)
+        ) {
+            return na - nb;
+        }
+
+        return aText.localeCompare(
+            bText,
+            'ko',
+            { numeric: true }
+        );
+    }
+
+
+    /*
+     * 11. 완성 활동지 생성
      */
     function renderWorksheet(period, questions, answers) {
         const root = document.getElementById('results');
@@ -845,7 +871,7 @@
         root.appendChild(summary);
 
         /*
-         * 질문이 아직 등록되지 않은 차시
+         * 해당 차시에 질문이 없는 경우
          */
         if (questions.length === 0) {
             root.appendChild(createElement(
@@ -856,7 +882,7 @@
         }
 
         /*
-         * 질문 시트의 문항을 기준으로 출력
+         * 질문 시트 문항을 기준으로 출력
          */
         questions.forEach(item => {
             const number = normalizeQuestionNo(
@@ -877,8 +903,7 @@
         });
 
         /*
-         * 질문 시트에 없는 문항 번호로
-         * 제출한 답안 확인
+         * 질문 시트에 없는 번호로 제출한 답안
          */
         const unknown = [...answerMap.entries()]
             .filter(([key]) => !registered.has(key))
@@ -910,36 +935,8 @@
 
 
     /*
-     * 11. 문항 번호 정렬
-     */
-    function compareQuestionNo(a, b) {
-        const na = Number(a);
-        const nb = Number(b);
-
-        if (
-            String(a) !== '' &&
-            String(b) !== '' &&
-            Number.isFinite(na) &&
-            Number.isFinite(nb)
-        ) {
-            return na - nb;
-        }
-
-        return String(a).localeCompare(
-            String(b),
-            'ko',
-            { numeric: true }
-        );
-    }
-
-
-    /*
-     * 12. 문항 카드
-     *
-     * 질문 원문
-     * 최신 답안
-     * 최종 제출 시각
-     * 이전 답안 드롭다운
+     * 12. 질문 카드 생성
+     * 질문 / 최신 답안 / 타임스탬프 / 이전 이력
      */
     function addQuestionCard(
         root,
@@ -969,7 +966,7 @@
         ));
 
         /*
-         * 답안 헤더와 상태
+         * 답안 헤더와 제출 상태
          */
         const header = createElement('div', 'answer-header');
 
@@ -1015,7 +1012,7 @@
         card.appendChild(answer);
 
         /*
-         * 최신 제출 시각
+         * 최종 제출 시각
          */
         if (record) {
             card.appendChild(createElement(
@@ -1028,10 +1025,7 @@
 
         /*
          * 이전 답안 드롭다운
-         *
-         * 서버에서 이미 최신순으로 전달됨.
-         * 드롭다운 열고 닫을 때
-         * Apps Script를 다시 호출하지 않음.
+         * 이력이 있을 때만 생성
          */
         if (
             record &&
@@ -1057,6 +1051,9 @@
                 'history-list'
             );
 
+            /*
+             * 이전 답안을 최신순으로 표시
+             */
             record.history.forEach(oldRecord => {
                 const item = createElement(
                     'div',
@@ -1088,5 +1085,6 @@
     }
 
 </script>
+
 </body>
 </html>
